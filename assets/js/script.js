@@ -1,36 +1,36 @@
 
 document.addEventListener('DOMContentLoaded', function(){
     loadQuestion();
-    checkAnswerBtn.addEventListener('click', checkAnswer);
-    playAgainBtn.addEventListener('click', playAgain);
-    totalQuestions.textContent = totalQuestion;
+    _checkBtn.addEventListener('click', checkAnswer);
+    _playAgainBtn.addEventListener('click', playAgain);
+    _totalQuestion.textContent = totalQuestion;
     score.textContent = correctScore;
 });
 
 const answers = document.querySelector('.answers');
-const checkAnswerBtn = document.getElementById('check-answer');
-const playAgainBtn = document.getElementById('play-again');
-const result = document.getElementById('result');
+const _checkBtn = document.getElementById('check-answer');
+const _playAgainBtn = document.getElementById('play-again');
+const _result = document.getElementById('result');
 const score = document.getElementById('score');
-const totalQuestions = document.getElementById('question-sum');
+const _totalQuestion = document.getElementById('question-sum');
 
 let correctAnswer = "";
 let correctScore = askedCount = 0;
-let totalQuestion = 10;
+let  totalQuestion = 10;
 
 
 async function loadQuestion(){
     const APIUrl = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
     const result = await fetch(`${APIUrl}`)
     const data = await result.json();
-    result.innerHTML = "";
+    _result.innerHTML = "";
     showCategory(data.results[0]);
     showQuestion(data.results[0]);
 }
 
 function showQuestion(data){
     let question = document.getElementById('question');
-    checkAnswerBtn.disabled = false;
+    _checkBtn.disabled = false;
     correctAnswer = data.correct_answer;
     let incorrectAnswer = data.incorrect_answers;
     let optionsList = incorrectAnswer;
@@ -64,26 +64,26 @@ function selectOption(){
 }
 
 function checkAnswer(){
-    checkAnswerBtn.disabled = true;
+    _checkBtn.disabled = true;
     if(answers.querySelector('.selected')){
         let selectedAnswer = answers.querySelector('.selected span').textContent;
         if(selectedAnswer == correctAnswer){
             correctScore++;
-            result.innerHTML = `<p><i class = "fas fa-check"></i></p>`;
+            _result.innerHTML = `<p><i class = "fas fa-check"></i></p>`;
         } else {
-            result.innerHTML = `<p><i class = "fas fa-times"></i></p> <small><b>Correct Answer: </b>${correctAnswer}</small>`;
+            _result.innerHTML = `<p><i class = "fas fa-times"></i></p> <small><b>Correct Answer: </b>${correctAnswer}</small>`;
         }
         checkCount();
     } else {
-        result.innerHTML = `<p><i class = "fas fa-question"></i>Please select an answer!</p>`;
-        checkAnswerBtn.disabled = false;
+        _result.innerHTML = `<p><i class = "fas fa-question"></i>Please select an answer!</p>`;
+        _checkBtn.disabled = false;
     }
 }
 
 
 function checkCount(){
     askedCount++;
-    totalQuestions.textContent = totalQuestion;
+    _totalQuestion.textContent = totalQuestion;
     score.textContent = correctScore;
     if(askedCount == totalQuestion){
         setTimeout(function(){
@@ -91,9 +91,9 @@ function checkCount(){
         }, 5000);
 
 
-        result.innerHTML += `<p>Your score is ${correctScore}.</p>`;
-        playAgainBtn.style.display = "block";
-        checkAnswerBtn.style.display = "none";
+        _result.innerHTML += `<p>Your score is ${correctScore}.</p>`;
+        _playAgainBtn.style.display = "block";
+        _checkBtn.style.display = "none";
     } else {
         setTimeout(function(){
             loadQuestion();
@@ -104,10 +104,10 @@ function checkCount(){
 
 function playAgain(){
     correctScore = askedCount = 0;
-    playAgainBtn.style.display = "none";
-    checkAnswerBtn.style.display = "block";
-    checkAnswerBtn.disabled = false;
-    totalQuestions.textContent = totalQuestion;
+    _playAgainBtn.style.display = "none";
+    _checkBtn.style.display = "block";
+    _checkBtn.disabled = false;
+    _totalQuestion.textContent = totalQuestion;
     score.textContent = correctScore;
     loadQuestion();
 }
