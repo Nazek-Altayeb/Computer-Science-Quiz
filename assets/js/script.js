@@ -16,7 +16,7 @@ const _totalQuestion = document.getElementById('question-sum');
 
 let correctAnswer = "";
 let correctScore = askedCount = 0;
-let  totalQuestion = 10;
+let totalQuestion = 10;
 
 
 async function loadQuestion(){
