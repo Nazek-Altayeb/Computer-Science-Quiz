@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome and google fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+
     <title>Computer Science Quiz</title>
-    <link rel="stylesheet" href="./assets/css/style.css" >
 </head>
+
 <body>
-    <div class="row col-5">
-        <h4 class="fw-bold text-center mt-3"></h4>
-        <form class=" bg-white px-4" action="">
-          <p class="fw-bold">How satisfied are you with our product?</p>
-          <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
-            <label class="form-check-label" for="radioExample1">
-              Option 1
-            </label>
-          </div>
-          <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
-            <label class="form-check-label" for="radioExample2">
-              Option 2
-            </label>
-          </div>
-          <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
-            <label class="form-check-label" for="radioExample3">
-              Option 3
-            </label>
-          </div>
-        </form>
-        <div class="text-end">
-          <button type="button" class="btn btn-primary">Submit</button>
+    <div class="container">
+        <div class="wrapper">
+            <div class="header">
+                <h1 class="title">Test Your knowledge</h1>
+                <h1 class="title">In</h1>
+                <h2 class="title" id="category">
+                    <!--title will be inserted here from the script.js? -->
+                </h2>
+                <h2 class="title">----------------------</h2>
+            </div>
+            <div class="body">
+                <h2 class="question" id="question">
+                    <!--Question will be inserted here from the script.js? -->
+                </h2>
+                <div class="score">
+                   <span id="score"></span>/<span id="question-sum"></span>
+                </div>
+                <ul class="answers">
+                    <!-- <li>first option will be inserted here from the script.js</li>
+                        <li>2. second option will be inserted here from the script.js</li>
+                        <li>3. third option will be inserted here from the script.js</li>
+                        <li>4. fourth option will be inserted here from the script.js</li> -->
+                </ul>
+                <div id="result">
+                </div>
+            </div>
+            <div class="footer">
+                <button type="button" id="check-answer">Check Answer</button>
+                <button type="button" id="play-again">Play Again!</button>
+            </div>
         </div>
-      </div>
-      
+    </div>
+
+
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
-
-
-
-
