@@ -39,7 +39,7 @@ function showQuestion(data) {
 
     answers.innerHTML = 
         answersList.map((answer) => {
-            return `<li> <span>- ${answer}</span> </li>`
+            return `<li> <span>${answer}</span> </li>`
         }).join('');
 
     selectAnswer();
