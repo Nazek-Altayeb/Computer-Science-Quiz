@@ -43,7 +43,7 @@ function showQuestion(data) {
 
     answers.innerHTML = 
         answersList.map((answer) => {
-            return `<li> <span>${answer}</span> </li>`
+            return `<li> <span>- ${answer}</span> </li>`
         }).join('');
 
     selectAnswer();
@@ -91,7 +91,6 @@ function countCorrectAndIncorrectAnswers() {
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
         setTimeout(function () {
-            // console.log("");
         }, 5000);
 
         _playAgainBtn.style.display = "block";
