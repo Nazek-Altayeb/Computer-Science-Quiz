@@ -1,16 +1,6 @@
 let correctAnswer = "";
 let correctScore = incorrectScore = askedQuestions = 0;
 let totalQuestions = 10;
-
-document.addEventListener('DOMContentLoaded', function () {
-    loadQuestion();
-    _checkBtn.addEventListener('click', checkAnswer);
-    _playAgainBtn.addEventListener('click', playAgain);
-    totalQ.textContent = totalQuestions;
-    questionCounter.textContent = askedQuestions;
-    alert.innerHTML = "";
-});
-
 let answers = document.querySelector('.answers');
 let _checkBtn = document.getElementById('check-answer');
 let correct = document.getElementById('correct');
@@ -20,6 +10,14 @@ let alert = document.getElementById('alert');
 let questionCounter = document.getElementById('question-counter');
 let totalQ = document.getElementById('question-sum');
 
+document.addEventListener('DOMContentLoaded', function () {
+    loadQuestion();
+    _checkBtn.addEventListener('click', checkAnswer);
+    _playAgainBtn.addEventListener('click', playAgain);
+    totalQ.textContent = totalQuestions;
+    questionCounter.textContent = askedQuestions;
+    alert.innerHTML = "";
+});
 
 async function loadQuestion() {
     let response = await fetch('https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple')
