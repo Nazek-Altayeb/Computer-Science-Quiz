@@ -21,7 +21,6 @@ const questionCounter = document.getElementById('question-counter');
 const totalQ = document.getElementById('question-sum');
 
 
-
 async function loadQuestion() {
     const APIUrl = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
     const result = await fetch(`${APIUrl}`)
@@ -33,10 +32,10 @@ async function loadQuestion() {
 
 function showQuestion(data) {
     let question = document.getElementById('question');
-    _checkBtn.disabled = false;
-    correctAnswer = data.correct_answer;
     let incorrectAnswer = data.incorrect_answers;
     let answersList = incorrectAnswer;
+    _checkBtn.disabled = false;
+    correctAnswer = data.correct_answer;   
     answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
 
     question.innerHTML = `${data.question} <br> `;
@@ -55,12 +54,8 @@ function showCategory(data) {
 }
 
 function selectAnswer() {
-    answers.querySelectorAll('li').forEach(function (answer) {
-        answer.addEventListener('click', function () {
-            if (answers.querySelector('.selected')) {
-                let activeAnswer = answers.querySelector('.selected');
-                activeAnswer.classList.remove('selected');
-            }
+    answers.querySelectorAll('li').forEach((answer) => {
+        answer.addEventListener('click', () => {
             answer.classList.add('selected');
         });
     });
