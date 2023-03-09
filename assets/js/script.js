@@ -11,20 +11,20 @@ document.addEventListener('DOMContentLoaded', function () {
     alert.innerHTML = "";
 });
 
-const answers = document.querySelector('.answers');
-const _checkBtn = document.getElementById('check-answer');
-const correct = document.getElementById('correct');
-const inCorrect = document.getElementById('incorrect');
-const _playAgainBtn = document.getElementById('play-again');
-const alert = document.getElementById('alert');
-const questionCounter = document.getElementById('question-counter');
-const totalQ = document.getElementById('question-sum');
+let answers = document.querySelector('.answers');
+let _checkBtn = document.getElementById('check-answer');
+let correct = document.getElementById('correct');
+let inCorrect = document.getElementById('incorrect');
+let _playAgainBtn = document.getElementById('play-again');
+let alert = document.getElementById('alert');
+let questionCounter = document.getElementById('question-counter');
+let totalQ = document.getElementById('question-sum');
 
 
 async function loadQuestion() {
-    const APIUrl = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
-    const result = await fetch(`${APIUrl}`)
-    const data = await result.json();
+    let APIUrl = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
+    let result = await fetch(`${APIUrl}`)
+    let data = await result.json();
     alert.innerHTML = "";
     showCategory(data.results[0]);
     showQuestion(data.results[0]);
@@ -85,13 +85,12 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-        setTimeout(function () {
-        }, 5000);
+        setTimeout( () => {}, 5000);
 
         _playAgainBtn.style.display = "block";
         _checkBtn.style.display = "none";
     } else {
-        setTimeout(function () {
+        setTimeout( () => {
             loadQuestion();
         }, 300);
     }
