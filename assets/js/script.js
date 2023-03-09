@@ -1,22 +1,25 @@
 
+let correctAnswer = "";
+let correctScore = incorrectScore = askedCount = 0;
+let totalQuestion = 10;
+
 document.addEventListener('DOMContentLoaded', function(){
     loadQuestion();
     _checkBtn.addEventListener('click', checkAnswer);
     _playAgainBtn.addEventListener('click', playAgain);
     _totalQuestion.textContent = totalQuestion;
-    score.textContent = correctScore;
+    questionCounter.textContent = askedCount;
 });
 
 const answers = document.querySelector('.answers');
 const _checkBtn = document.getElementById('check-answer');
+const correct = document.getElementById('correct');
+const inCorrect = document.getElementById('incorrect');
 const _playAgainBtn = document.getElementById('play-again');
 const _result = document.getElementById('result');
-const score = document.getElementById('score');
+const questionCounter = document.getElementById('question-counter');
 const _totalQuestion = document.getElementById('question-sum');
 
-let correctAnswer = "";
-let correctScore = askedCount = 0;
-let totalQuestion = 10;
 
 
 async function loadQuestion(){
@@ -69,13 +72,12 @@ function checkAnswer(){
         let selectedAnswer = answers.querySelector('.selected span').textContent;
         if(selectedAnswer == correctAnswer){
             correctScore++;
-            _result.innerHTML = `<p><i class = "fas fa-check"></i></p>`;
         } else {
-            _result.innerHTML = `<p><i class = "fas fa-times"></i></p> <small><b>Correct Answer: </b>${correctAnswer}</small>`;
+            incorrectScore++;
         }
         checkCount();
     } else {
-        _result.innerHTML = `<p><i class = "fas fa-question"></i>Please select an answer!</p>`;
+        _result.innerHTML = `<p>Please select an answer!</p>`;
         _checkBtn.disabled = false;
     }
 }
@@ -84,14 +86,14 @@ function checkAnswer(){
 function checkCount(){
     askedCount++;
     _totalQuestion.textContent = totalQuestion;
-    score.textContent = correctScore;
+    questionCounter.textContent = askedCount;
+    correct.textContent = correctScore;
+    incorrect.textContent = incorrectScore;
     if(askedCount == totalQuestion){
         setTimeout(function(){
             console.log("");
         }, 5000);
 
-
-        _result.innerHTML += `<p>Your score is ${correctScore}.</p>`;
         _playAgainBtn.style.display = "block";
         _checkBtn.style.display = "none";
     } else {
@@ -103,11 +105,13 @@ function checkCount(){
 
 
 function playAgain(){
-    correctScore = askedCount = 0;
+    correctScore = askedCount = incorrectScore = 0;
     _playAgainBtn.style.display = "none";
     _checkBtn.style.display = "block";
     _checkBtn.disabled = false;
     _totalQuestion.textContent = totalQuestion;
-    score.textContent = correctScore;
+    questionCounter.textContent = askedCount;
+    correct.textContent = correctScore;
+    incorrect.textContent = incorrectScore;
     loadQuestion();
 }
