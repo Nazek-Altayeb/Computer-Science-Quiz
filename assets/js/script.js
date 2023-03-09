@@ -10,7 +10,7 @@ let alert = document.getElementById('alert');
 let questionCounter = document.getElementById('question-counter');
 let totalQ = document.getElementById('question-sum');
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded',  () => {
     loadQuestion();
     _checkBtn.addEventListener('click', checkAnswer);
     _playAgainBtn.addEventListener('click', playAgain);
