@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     _playAgainBtn.addEventListener('click', playAgain);
     totalQ.textContent = totalQuestions;
     questionCounter.textContent = askedQuestions;
+    alert.innerHTML = "";
 });
 
 const answers = document.querySelector('.answers');
@@ -15,7 +16,7 @@ const _checkBtn = document.getElementById('check-answer');
 const correct = document.getElementById('correct');
 const inCorrect = document.getElementById('incorrect');
 const _playAgainBtn = document.getElementById('play-again');
-const _result = document.getElementById('result');
+const alert = document.getElementById('alert');
 const questionCounter = document.getElementById('question-counter');
 const totalQ = document.getElementById('question-sum');
 
@@ -25,7 +26,7 @@ async function loadQuestion() {
     const APIUrl = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
     const result = await fetch(`${APIUrl}`)
     const data = await result.json();
-    _result.innerHTML = "";
+    alert.innerHTML = "";
     showCategory(data.results[0]);
     showQuestion(data.results[0]);
 }
@@ -40,11 +41,11 @@ function showQuestion(data) {
 
     question.innerHTML = `${data.question} <br> `;
 
-    answers.innerHTML = `
-        ${answersList.map((answer, index) => `
-            <li> ${index + 1}. <span>${answer}</span> </li>
-        `).join('')}
-    `;
+    answers.innerHTML = 
+        answersList.map((answer) => {
+            return `<li> <span>${answer}</span> </li>`
+        }).join('');
+
     selectAnswer();
 }
 
@@ -76,7 +77,7 @@ function checkAnswer() {
         }
         countCorrectAndIncorrectAnswers();
     } else {
-        _result.innerHTML = `<p>Please select an answer!</p>`;
+        alert.innerHTML = `<p>Please select an answer!</p>`;
         _checkBtn.disabled = false;
     }
 }
@@ -90,7 +91,7 @@ function countCorrectAndIncorrectAnswers() {
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
         setTimeout(function () {
-            console.log("");
+            // console.log("");
         }, 5000);
 
         _playAgainBtn.style.display = "block";
@@ -100,6 +101,7 @@ function countCorrectAndIncorrectAnswers() {
             loadQuestion();
         }, 300);
     }
+    alert.innerHTML = "";
 }
 
 

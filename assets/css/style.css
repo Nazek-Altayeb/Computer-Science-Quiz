@@ -13,18 +13,15 @@ body{
 }
 
 .container{
-    /* display: flex; */
     align-items: center;
     justify-content: center;
     margin: 50px auto;
     background: #f2f2f2;
     padding: 1.5rem 4rem 3rem 4rem;
-    /* margin: 10px; */
     width: 600px;
     height: 680px;
     border-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
-    /* position: relative;  */
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -78,7 +75,6 @@ body{
 }
 .scores {
     display: inline;
-    /* padding: 15px; */
 }
 #correct {
     color: green;
@@ -90,7 +86,6 @@ body{
     font-weight: bold;
 }
 
-/* js related */
 .selected{
     box-shadow: 0 4px 0 0 #bbbbbb!important;
 }
@@ -117,21 +112,11 @@ body{
 #play-again{
     display: none;
 }
-#result{
+#alert{
     padding: .7rem 0;
     text-align: center;
     font-weight: 600;
     font-size: 1.3rem;
-}
-#result i{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    line-height: 30px;
-    margin-right: .5rem;
-    margin-bottom: .5rem;
-    background-color: #3f2d2d;
-    color: #f2f2f2;
 }
 
 @media(max-width: 678px){
