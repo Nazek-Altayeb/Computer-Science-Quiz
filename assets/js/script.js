@@ -22,9 +22,8 @@ let totalQ = document.getElementById('question-sum');
 
 
 async function loadQuestion() {
-    let APIUrl = 'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
-    let result = await fetch(`${APIUrl}`)
-    let data = await result.json();
+    let response = await fetch('https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple')
+    let data = await response.json();
     alert.innerHTML = "";
     showCategory(data.results[0]);
     showQuestion(data.results[0]);
@@ -77,7 +76,6 @@ function checkAnswer() {
     }
 }
 
-
 function countCorrectAndIncorrectAnswers() {
     askedQuestions++;
     totalQ.textContent = totalQuestions;
@@ -96,7 +94,6 @@ function countCorrectAndIncorrectAnswers() {
     }
     alert.innerHTML = "";
 }
-
 
 function playAgain() {
     correctScore = askedQuestions = incorrectScore = 0;
