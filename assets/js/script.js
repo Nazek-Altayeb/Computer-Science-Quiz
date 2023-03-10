@@ -1,8 +1,10 @@
 let correctAnswer = "";
 let correctScore = incorrectScore = askedQuestions = 0;
-// const enteredNumberOfQuestions = document.getElementById('number-of-questions');
-let totalQuestions = 10;
-const url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
+let totalQuestions;
+let  enteredNumberOfQuestions;
+let url;
+
+
 let answers = document.querySelector('.answers');
 let _checkBtn = document.getElementById('check-answer');
 let correct = document.getElementById('correct');
@@ -13,18 +15,19 @@ let questionCounter = document.getElementById('question-counter');
 let totalQ = document.getElementById('question-sum');
 const timer = document.getElementById('timer');
 let form = document.getElementById('form');
+
 // let time;
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     let usr = document.getElementById('user-name').value;
-    console.log(usr);
-
-    let enteredNumberOfQuestions = document.getElementById('number-of-questions').value.toString();
-    console.log(enteredNumberOfQuestions);
-    // const formData = new FormData(e.target);
-    // console.log(formData);
+    enteredNumberOfQuestions = document.getElementById('number-of-questions').value;
+    totalQuestions = parseInt(enteredNumberOfQuestions,10);
+    url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
   });
+  
+ 
+  
 
 document.addEventListener('DOMContentLoaded',  () => {
     loadQuestion();
