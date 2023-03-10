@@ -3,6 +3,7 @@ let correctScore = incorrectScore = askedQuestions = 0;
 let totalQuestions;
 let enteredNumberOfQuestions;
 let url;
+let quizDuration;
 
 
 let answers = document.querySelector('.answers');
@@ -20,10 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         let userName = document.getElementById('user-name').value;
-        console.log(userName)
+        // console.log(userName)
         enteredNumberOfQuestions = document.getElementById('number-of-questions').value;
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
-        console.log(totalQuestions)
+        quizDuration = totalQuestions;
+        timer.textContent = quizDuration;
+        countDown(quizDuration);
+        // console.log(totalQuestions)
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
 
         loadQuestion();
@@ -44,6 +48,19 @@ async function loadQuestion() {
     showCategory(data.results[0]);
     showQuestion(data.results[0]);
 
+}
+
+function countDown(quizDuration){
+    setInterval(() => {
+        minutes = parseInt(quizDuration / 60, 10);
+        seconds = parseInt(quizDuration % 60, 10);
+
+        timer.textContent = minutes + ":" + seconds;
+
+        if (--quizDuration < 0) {
+            quizDuration = 0;
+        }
+    }, 1000);
 }
 
 function showQuestion(data) {
