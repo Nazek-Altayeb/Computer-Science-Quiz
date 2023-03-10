@@ -1,7 +1,7 @@
 let correctAnswer = "";
 let correctScore = incorrectScore = askedQuestions = 0;
 let totalQuestions;
-let  enteredNumberOfQuestions;
+let enteredNumberOfQuestions;
 let url;
 
 
@@ -16,40 +16,34 @@ let totalQ = document.getElementById('question-sum');
 const timer = document.getElementById('timer');
 let form = document.getElementById('form');
 
-// let time;
+document.addEventListener('DOMContentLoaded', () => {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let userName = document.getElementById('user-name').value;
+        console.log(userName)
+        enteredNumberOfQuestions = document.getElementById('number-of-questions').value;
+        totalQuestions = parseInt(enteredNumberOfQuestions, 10);
+        console.log(totalQuestions)
+        url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    let usr = document.getElementById('user-name').value;
-    enteredNumberOfQuestions = document.getElementById('number-of-questions').value;
-    totalQuestions = parseInt(enteredNumberOfQuestions,10);
-    url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
-  });
-  
- 
-  
-
-document.addEventListener('DOMContentLoaded',  () => {
-    loadQuestion();
-    _checkBtn.addEventListener('click', checkAnswer);
-    _playAgainBtn.addEventListener('click', playAgain);
-    totalQ.textContent = totalQuestions;
-    questionCounter.textContent = askedQuestions;
-    alert.innerHTML = "";
+        loadQuestion();
+        _checkBtn.addEventListener('click', checkAnswer);
+        _playAgainBtn.addEventListener('click', playAgain);
+        totalQ.textContent = totalQuestions;
+        questionCounter.textContent = askedQuestions;
+        alert.innerHTML = "";
+    });
 });
-//  function timer(){
-//     let seconds = 0; 
-//     time = setInterval(() => {
-//         timer.innerHTML = '00:'+seconds;
-//         seconds++;}, 100);
-//  }
+
+
+
 async function loadQuestion() {
     let response = await fetch(`${url}`)
     let data = await response.json();
     alert.innerHTML = "";
     showCategory(data.results[0]);
     showQuestion(data.results[0]);
-   // timer();
+
 }
 
 function showQuestion(data) {
@@ -57,12 +51,12 @@ function showQuestion(data) {
     let incorrectAnswer = data.incorrect_answers;
     let answersList = incorrectAnswer;
     _checkBtn.disabled = false;
-    correctAnswer = data.correct_answer;   
+    correctAnswer = data.correct_answer;
     answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
 
     question.innerHTML = `${data.question} <br> `;
 
-    answers.innerHTML = 
+    answers.innerHTML =
         answersList.map((answer) => {
             return `<li> <span>${answer}</span> </li>`
         }).join('');
@@ -105,12 +99,12 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-        setTimeout( () => {}, 5000);
+        setTimeout(() => {}, 5000);
 
         _playAgainBtn.style.display = "block";
         _checkBtn.style.display = "none";
     } else {
-        setTimeout( () => {
+        setTimeout(() => {
             loadQuestion();
         }, 300);
     }
