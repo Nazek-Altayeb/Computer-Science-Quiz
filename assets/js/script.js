@@ -1,6 +1,8 @@
 let correctAnswer = "";
 let correctScore = incorrectScore = askedQuestions = 0;
+// const enteredNumberOfQuestions = document.getElementById('number-of-questions');
 let totalQuestions = 10;
+const url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
 let answers = document.querySelector('.answers');
 let _checkBtn = document.getElementById('check-answer');
 let correct = document.getElementById('correct');
@@ -9,6 +11,20 @@ let _playAgainBtn = document.getElementById('play-again');
 let alert = document.getElementById('alert');
 let questionCounter = document.getElementById('question-counter');
 let totalQ = document.getElementById('question-sum');
+const timer = document.getElementById('timer');
+let form = document.getElementById('form');
+// let time;
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let usr = document.getElementById('user-name').value;
+    console.log(usr);
+
+    let enteredNumberOfQuestions = document.getElementById('number-of-questions').value.toString();
+    console.log(enteredNumberOfQuestions);
+    // const formData = new FormData(e.target);
+    // console.log(formData);
+  });
 
 document.addEventListener('DOMContentLoaded',  () => {
     loadQuestion();
@@ -18,13 +34,19 @@ document.addEventListener('DOMContentLoaded',  () => {
     questionCounter.textContent = askedQuestions;
     alert.innerHTML = "";
 });
-
+//  function timer(){
+//     let seconds = 0; 
+//     time = setInterval(() => {
+//         timer.innerHTML = '00:'+seconds;
+//         seconds++;}, 100);
+//  }
 async function loadQuestion() {
-    let response = await fetch('https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple')
+    let response = await fetch(`${url}`)
     let data = await response.json();
     alert.innerHTML = "";
     showCategory(data.results[0]);
     showQuestion(data.results[0]);
+   // timer();
 }
 
 function showQuestion(data) {
@@ -41,7 +63,6 @@ function showQuestion(data) {
         answersList.map((answer) => {
             return `<li> <span>${answer}</span> </li>`
         }).join('');
-
     selectAnswer();
 }
 
