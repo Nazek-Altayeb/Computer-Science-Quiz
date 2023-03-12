@@ -62,20 +62,14 @@ body{
     margin-top: 0.5rem;
     display: inline-block;
 }
-.answers{
-    list-style-type: none;
-    margin: 1rem 0;
-}
-
-.answers li:hover{
+.answers p:hover {
     background-color: #f2f2f2;
     color: #000;
     border-color: #f2f2f2;
     box-shadow: 0 4px 0 0 #bbbbbb;
+    cursor: pointer;
 }
-.answers li:active{
-    transform: scale(0.97);
-}
+
 .scoreArea {
     margin: 20px auto;
     width: 100%;

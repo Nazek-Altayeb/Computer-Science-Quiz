@@ -3,6 +3,7 @@ let correctScore = incorrectScore = askedQuestions = 0;
 let totalQuestions;
 let enteredNumberOfQuestions;
 let url;
+let userName;
 let quizDuration;
 let time;
 
@@ -21,7 +22,7 @@ let form = document.getElementById('form');
 document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        let userName = document.getElementById('user-name').value;
+        userName = document.getElementById('user-name').value;
         enteredNumberOfQuestions = document.getElementById('number-of-questions').value;
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
@@ -54,12 +55,19 @@ function countDown(){
         const seconds = time % 60;
         countdown.textContent = minutes + ":" + seconds;
         time--;
-        // if (minutesleft < 0 && seconds == 0) {
-        //     clearInterval(interv);
-        //     document.getElementById("minutes").innerHTML = ""
-        //     document.getElementById("seconds").innerHTML = ""
-        // }
+        if (minutes == 00 && seconds == 00) {
+            clearInterval();
+            _playAgainBtn.style.display = "block";
+            _checkBtn.style.display = "none";
+            let score = correctScore/totalQuestions;
+            alert.innerHTML = `<p>Your score is ${score}</p>`;
+         }
 } 
+
+function showCategory(data) {
+    let category = document.getElementById('category');
+    category.innerHTML = `<span class = "category"> ${data.category} </span> <br>`
+}
 
 function showQuestion(data) {
     let question = document.getElementById('question');
@@ -73,19 +81,24 @@ function showQuestion(data) {
 
     answers.innerHTML =
         answersList.map((answer) => {
-            return `<li> <span>${answer}</span> </li>`
+          
+          return `<p><span>${answer}</span> <p>`
         }).join('');
     selectAnswer();
 }
 
-function showCategory(data) {
-    let category = document.getElementById('category');
-    category.innerHTML = `<span class = "category"> ${data.category} </span> <br>`
-}
 
+/**
+ * de-select other answers when select one of them
+ * this code taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified accordingly  
+ */
 function selectAnswer() {
-    answers.querySelectorAll('li').forEach((answer) => {
+    answers.querySelectorAll('p').forEach((answer) => {
         answer.addEventListener('click', () => {
+            if(answers.querySelector('.selected')){
+                const active = answers.querySelector('.selected');                
+                active.classList.remove('selected');
+            }
             answer.classList.add('selected');
         });
     });
@@ -114,8 +127,10 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
+        clearInterval();
         setTimeout(() => {}, 5000);
-
+        let score = correctScore/totalQuestions;
+        alert.innerHTML = `<p>Your score is ${score}</p>`;
         _playAgainBtn.style.display = "block";
         _checkBtn.style.display = "none";
     } else {
@@ -131,6 +146,9 @@ function playAgain() {
     _playAgainBtn.style.display = "none";
     _checkBtn.style.display = "block";
     _checkBtn.disabled = false;
+    let score = correctScore/totalQuestions;
+    alert.innerHTML = `<p>Your score is ${score}</p>`;
+    setInterval(countDown, 1000);
     totalQ.textContent = totalQuestions;
     questionCounter.textContent = askedQuestions;
     correct.textContent = correctScore;
