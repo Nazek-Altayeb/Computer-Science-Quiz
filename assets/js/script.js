@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
         time = quizDuration*60;
-        setInterval(countDown, 1000);
+        countDown();
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
 
         loadQuestion();
@@ -51,17 +51,20 @@ async function loadQuestion() {
 }
 
 function countDown(){
+    var timer = setInterval(() => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         countdown.textContent = minutes + ":" + seconds;
         time--;
         if (minutes == 00 && seconds == 00) {
-            clearInterval();
+            clearInterval(timer);
             _playAgainBtn.style.display = "block";
             _checkBtn.style.display = "none";
             let score = correctScore/totalQuestions;
             alert.innerHTML = `<p>Your score is ${score}</p>`;
          }
+    }, 1000)
+       
 } 
 
 function showCategory(data) {
@@ -127,31 +130,31 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-        clearInterval();
         setTimeout(() => {}, 5000);
-        let score = correctScore/totalQuestions;
-        alert.innerHTML = `<p>Your score is ${score}</p>`;
         _playAgainBtn.style.display = "block";
-        _checkBtn.style.display = "none";
+        _checkBtn.style.display = "none";        
+        let score = correctScore/totalQuestions;
+        alert.innerHTML = `<p>Your score is ${score}</p>`;   
+        clearInterval(timer); 
     } else {
         setTimeout(() => {
             loadQuestion();
         }, 300);
     }
-    alert.innerHTML = "";
+   //  alert.innerHTML = "";
 }
 
 function playAgain() {
     correctScore = askedQuestions = incorrectScore = 0;
+    alert.innerHTML = "";
     _playAgainBtn.style.display = "none";
     _checkBtn.style.display = "block";
     _checkBtn.disabled = false;
-    let score = correctScore/totalQuestions;
-    alert.innerHTML = `<p>Your score is ${score}</p>`;
-    setInterval(countDown, 1000);
     totalQ.textContent = totalQuestions;
     questionCounter.textContent = askedQuestions;
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
-    loadQuestion();
+    loadQuestion();   
+    time = quizDuration*60;  
+    countDown();
 }
