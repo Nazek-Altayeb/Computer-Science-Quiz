@@ -6,7 +6,7 @@ let url;
 let userName;
 let quizDuration;
 let time;
-
+let intervalId;
 
 let answers = document.querySelector('.answers');
 let _checkBtn = document.getElementById('check-answer');
@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
         time = quizDuration*60;
-        countDown();
+        setInterval(countDown,1000);
+        intervalId = setInterval(countDown,1000);
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
         loadQuestion();
         _checkBtn.addEventListener('click', checkAnswer);
@@ -40,76 +41,81 @@ document.addEventListener('DOMContentLoaded', () => {
         _checkBtn.style.display = "block";
         startQuizBtn.style.display ="none";
         document.getElementById("user-name").disabled = true;
-    document.getElementById("number-of-questions").disabled = true;
+        document.getElementById("number-of-questions").disabled = true;
     });
     
 });
 
-
-
 async function loadQuestion() {
-    let response = await fetch(`${url}`)
-    let data = await response.json();
+    answers.innerHTML = '';
+    let response = await fetch(`${url}`) 
+    let data = await response.json(); 
     alert.innerHTML = "";
     showCategory(data.results[0]);
-    showQuestion(data.results[0]);
+    DisplayQuestionAndAnswers(data.results[0]);
 }
 
-function countDown(){
-    var timer = setInterval(() => {
+var countDown =  () => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         countdown.textContent = minutes + ":" + seconds;
         time--;
-        if (minutes == 00 && seconds == 00) {
-            clearInterval(timer);
+        if (minutes < 0 ) {
+            clearInterval(intervalId);
             _playAgainBtn.style.display = "block";
             _checkBtn.style.display = "none";
             let score = correctScore/totalQuestions;
             alert.innerHTML = `<p>Your score is ${score}</p>`;
          }
-    }, 1000)
-       
 } 
 
-function showCategory(data) {
-    let category = document.getElementById('category');
+ function showCategory(data) {
+     let category = document.getElementById('category');
     category.innerHTML = `<span class = "category"> ${data.category} </span> <br>`
 }
 
-function showQuestion(data) {
-    let question = document.getElementById('question');
-    let incorrectAnswer = data.incorrect_answers;
-    let answersList = incorrectAnswer;
-    _checkBtn.disabled = false;
-    correctAnswer = data.correct_answer;
-    answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
+ function DisplayQuestionAndAnswers(data) {
+     let question = document.getElementById('question');
+     let incorrectAnswer = data.incorrect_answers;
+     let answersList = incorrectAnswer;
+     _checkBtn.disabled = false;
+     correctAnswer = data.correct_answer;
+     answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
+     question.innerHTML = `${data.question}`;
+    
+    //  answers.innerHTML =
+    //      answersList.map((answer) => {
+    //        return `<p><span>${answer}</span> <p>`
+    //      }).join('');
+   
+         answersList.forEach((answer)=>{
+            let paragraph = document.createElement("p");
+            let span = document.createElement("span")
+            
+            span.textContent = answer;
+            paragraph.appendChild(span);
+            answers.appendChild(paragraph);
+            });
 
-    question.innerHTML = `${data.question}`;
-
-    answers.innerHTML =
-        answersList.map((answer) => {
-          
-          return `<p><span>${answer}</span> <p>`
-        }).join('');
-    selectAnswer();
-}
-
+     selectAnswer();
+     
+ }
 
 /**
  * de-select other answers when select one of them
- * this code taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified accordingly  
+ * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified accordingly  
  */
+
 function selectAnswer() {
-    answers.querySelectorAll('p').forEach((answer) => {
+     answers.querySelectorAll('p').forEach((answer) => {
         answer.addEventListener('click', () => {
-            if(answers.querySelector('.selected')){
-                const active = answers.querySelector('.selected');                
-                active.classList.remove('selected');
+             if(answers.querySelector('.selected')){
+                 const active = answers.querySelector('.selected');                
+                 active.classList.remove('selected');
             }
-            answer.classList.add('selected');
-        });
-    });
+             answer.classList.add('selected');
+         });
+     });
 }
 
 function checkAnswer() {
@@ -135,17 +141,18 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-        //clearInterval(timer); 
-      //  setTimeout(() => {}, 5000);
+        // for some reason, this line of code  is not executing (the time is not reseting to 00:00)
+       // clearInterval(intervalId); 
+       setTimeout(() => {}, 5000);
         _playAgainBtn.style.display = "block";
         _checkBtn.style.display = "none";        
         let score = correctScore/totalQuestions;
         alert.innerHTML = `<p>Your score is ${score}</p>`;   
-       clearInterval(timer); 
+        clearInterval(intervalId); 
     } else {
         setTimeout(() => {
             loadQuestion();
-        }, 300);
+        }, 1000);
     }
    //  alert.innerHTML = "";
 }
@@ -161,6 +168,6 @@ function playAgain() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     loadQuestion();   
-    time = quizDuration*60;  
-    countDown();
+    time = quizDuration*60;      
+    setInterval(countDown, 1000);
 }
