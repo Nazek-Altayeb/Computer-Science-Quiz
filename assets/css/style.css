@@ -24,7 +24,7 @@ body{
     border-bottom-right-radius: 1.5rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-#save-button{
+#start-quiz-button{
    margin-top: 2px;
    float: right;
    border: 1px solid black;
@@ -38,7 +38,7 @@ body{
     text-align: center;
     font-size: 1.5rem;
 }
-.score{
+.questions-number{
     text-align: center;
     margin-bottom: 1rem;
     border-bottom: 1px solid #000;
