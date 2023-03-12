@@ -4,6 +4,7 @@ let totalQuestions;
 let enteredNumberOfQuestions;
 let url;
 let quizDuration;
+let time;
 
 
 let answers = document.querySelector('.answers');
@@ -14,20 +15,18 @@ let _playAgainBtn = document.getElementById('play-again');
 let alert = document.getElementById('alert');
 let questionCounter = document.getElementById('question-counter');
 let totalQ = document.getElementById('question-sum');
-const timer = document.getElementById('timer');
+let countdown = document.getElementById('count-down-timer');
 let form = document.getElementById('form');
 
 document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         let userName = document.getElementById('user-name').value;
-        // console.log(userName)
         enteredNumberOfQuestions = document.getElementById('number-of-questions').value;
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
-        timer.textContent = quizDuration;
-        countDown(quizDuration);
-        // console.log(totalQuestions)
+        time = quizDuration*60;
+        setInterval(countDown, 1000);
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
 
         loadQuestion();
@@ -50,18 +49,17 @@ async function loadQuestion() {
 
 }
 
-function countDown(quizDuration){
-    setInterval(() => {
-        minutes = parseInt(quizDuration / 60, 10);
-        seconds = parseInt(quizDuration % 60, 10);
-
-        timer.textContent = minutes + ":" + seconds;
-
-        if (--quizDuration < 0) {
-            quizDuration = 0;
-        }
-    }, 1000);
-}
+function countDown(){
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        countdown.textContent = minutes + ":" + seconds;
+        time--;
+        // if (minutesleft < 0 && seconds == 0) {
+        //     clearInterval(interv);
+        //     document.getElementById("minutes").innerHTML = ""
+        //     document.getElementById("seconds").innerHTML = ""
+        // }
+} 
 
 function showQuestion(data) {
     let question = document.getElementById('question');
