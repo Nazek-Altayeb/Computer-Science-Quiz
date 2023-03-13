@@ -133,6 +133,29 @@ function filInUserInfo(){
      selectAnswer();
  }
 
+ /**
+ * increase either the correct-answer-counter or wrong-answer-counter each time a question is answered.
+ * alert user with a message if no answer is selected.
+ */
+function checkAnswer() {
+    let message = document.createElement('p');
+    let allAnswers = answers.getElementsByClassName('selected')[0];
+    let selectedAnswer = allAnswers.getElementsByTagName('span')[0].textContent;
+    _checkBtn.disabled = true;
+    if (allAnswers) {       
+        if (selectedAnswer == correctAnswer) {
+            correctScore++;
+        } else {
+            incorrectScore++;
+        }
+        countCorrectAndIncorrectAnswers();
+    } else {
+        message.textContent = "Please select an answer!";
+        alert.appendChild(message);
+        _checkBtn.disabled = false;
+    }
+}
+
 /**
  * de-select other answers when one answer is selected
  * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified according to the logic needs 
@@ -148,31 +171,6 @@ function selectAnswer() {
              answer.classList.add('selected');
          });
      });
-}
-
-/**
- * increase either the correct-answer-counter or wrong-answer-counter each time a new answer is selected.
- * alert user with a message if no answer is selected.
- */
-function checkAnswer() {
-    let message = document.createElement('p');
-    let selectedAnswers = answers.getElementsByClassName('selected');
-    // let selectedAnswersSpan = answers.getElementsByClassName('selected').textContent;
-    _checkBtn.disabled = true;
-    if (selectedAnswers) {
-       let selectedAnswer = answers.querySelector('.selected span').textContent;
-        // let selectedAnswer = selectedAnswersSpan;
-        if (selectedAnswer == correctAnswer) {
-            correctScore++;
-        } else {
-            incorrectScore++;
-        }
-        countCorrectAndIncorrectAnswers();
-    } else {
-        message.textContent = "Please select an answer!";
-        alert.appendChild(message);
-        _checkBtn.disabled = false;
-    }
 }
 
 /**
