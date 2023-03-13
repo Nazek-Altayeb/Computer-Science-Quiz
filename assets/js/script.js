@@ -23,8 +23,7 @@ let startQuizBtn = document.getElementById('start-quiz-button');
 document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        userName = document.getElementById('user-name').value;
-        enteredNumberOfQuestions = document.getElementById('number-of-questions').value;
+        filInUserInfo();
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
         time = quizDuration*60;
@@ -45,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 });
+
 
 async function loadQuestion() {
     answers.innerHTML = '';
@@ -69,6 +69,10 @@ var countDown =  () => {
          }
 } 
 
+function filInUserInfo(){
+    userName = document.getElementById('user-name').value;
+        enteredNumberOfQuestions = document.getElementById('number-of-questions').value;        
+}
  function showCategory(data) {
      let category = document.getElementById('category');
     category.innerHTML = `<span class = "category"> ${data.category} </span> <br>`
