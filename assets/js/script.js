@@ -60,6 +60,7 @@ async function loadData() {
     answers.innerHTML = '';
     question.innerHTML = '';
     alert.innerHTML = "";
+    category.innerHTML = '';
     let response = await fetch(`${url}`) 
     let data = await response.json();     
     displayCategory(data.results[0]);
@@ -155,9 +156,12 @@ function selectAnswer() {
  */
 function checkAnswer() {
     let message = document.createElement('p');
+    let selectedAnswers = answers.getElementsByClassName('selected');
+    // let selectedAnswersSpan = answers.getElementsByClassName('selected').textContent;
     _checkBtn.disabled = true;
-    if (answers.querySelector('.selected')) {
-        let selectedAnswer = answers.querySelector('.selected span').textContent;
+    if (selectedAnswers) {
+       let selectedAnswer = answers.querySelector('.selected span').textContent;
+        // let selectedAnswer = selectedAnswersSpan;
         if (selectedAnswer == correctAnswer) {
             correctScore++;
         } else {
