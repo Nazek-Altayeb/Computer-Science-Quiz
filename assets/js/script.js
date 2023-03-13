@@ -48,14 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadQuestion() {
     answers.innerHTML = '';
-    let response = await fetch(`${url}`) 
-    let data = await response.json(); 
+    question.innerHTML = '';
     alert.innerHTML = "";
+    let response = await fetch(`${url}`) 
+    let data = await response.json();     
     showCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
 }
 
 var countDown =  () => {
+        let countDownMessage = document.createElement('p');
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         countdown.textContent = minutes + ":" + seconds;
@@ -65,41 +67,45 @@ var countDown =  () => {
             _playAgainBtn.style.display = "block";
             _checkBtn.style.display = "none";
             let score = correctScore/totalQuestions;
-            alert.innerHTML = `<p>Your score is ${score}</p>`;
+            countDownMessage.textContent = `Your score is ${score}`;
+            alert.appendChild(countDownMessage);
          }
 } 
 
 function filInUserInfo(){
     userName = document.getElementById('user-name').value;
-        enteredNumberOfQuestions = document.getElementById('number-of-questions').value;        
+    enteredNumberOfQuestions = document.getElementById('number-of-questions').value;        
 }
  function showCategory(data) {
      let category = document.getElementById('category');
-    category.innerHTML = `<span class = "category"> ${data.category} </span> <br>`
+     let ctg = document.createElement('span');
+     ctg.classList.add('category');
+     ctg.textContent = data.category;
+     category.appendChild(ctg);
+    // category.innerHTML = `<span class = "category"> ${data.category} </span> <br>`
 }
 
  function DisplayQuestionAndAnswers(data) {
      let question = document.getElementById('question');
+     let ques = document.createElement("h2");
      let incorrectAnswer = data.incorrect_answers;
      let answersList = incorrectAnswer;
+     
      _checkBtn.disabled = false;
+
      correctAnswer = data.correct_answer;
      answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
-     question.innerHTML = `${data.question}`;
-    
-    //  answers.innerHTML =
-    //      answersList.map((answer) => {
-    //        return `<p><span>${answer}</span> <p>`
-    //      }).join('');
-   
-         answersList.forEach((answer)=>{
-            let paragraph = document.createElement("p");
-            let span = document.createElement("span")
-            
-            span.textContent = answer;
-            paragraph.appendChild(span);
-            answers.appendChild(paragraph);
-            });
+     
+     ques.textContent =  data.question;
+     question.appendChild(ques);
+
+    answersList.forEach((answer)=>{
+        let paragraph = document.createElement("p");
+        let span = document.createElement("span")
+        span.textContent = answer;
+        paragraph.appendChild(span);
+        answers.appendChild(paragraph);
+    });
 
      selectAnswer();
      
@@ -107,7 +113,7 @@ function filInUserInfo(){
 
 /**
  * de-select other answers when select one of them
- * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified accordingly  
+ * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified according to my logic needs 
  */
 
 function selectAnswer() {
@@ -123,6 +129,7 @@ function selectAnswer() {
 }
 
 function checkAnswer() {
+    let message = document.createElement('p');
     _checkBtn.disabled = true;
     if (answers.querySelector('.selected')) {
         let selectedAnswer = answers.querySelector('.selected span').textContent;
@@ -133,12 +140,14 @@ function checkAnswer() {
         }
         countCorrectAndIncorrectAnswers();
     } else {
-        alert.innerHTML = `<p>Please select an answer!</p>`;
+        message.textContent = "Please select an answer!";
+        alert.appendChild(message);
         _checkBtn.disabled = false;
     }
 }
 
 function countCorrectAndIncorrectAnswers() {
+    let scoreMessage = document.createElement('p');
     askedQuestions++;
     totalQ.textContent = totalQuestions;
     questionCounter.textContent = askedQuestions;
@@ -151,14 +160,14 @@ function countCorrectAndIncorrectAnswers() {
         _playAgainBtn.style.display = "block";
         _checkBtn.style.display = "none";        
         let score = correctScore/totalQuestions;
-        alert.innerHTML = `<p>Your score is ${score}</p>`;   
+        scoreMessage.textContent= `Your score is ${score}</p>`;
+        alert.appendChild(scoreMessage);  
         clearInterval(intervalId); 
     } else {
         setTimeout(() => {
             loadQuestion();
         }, 1000);
     }
-   //  alert.innerHTML = "";
 }
 
 function playAgain() {
