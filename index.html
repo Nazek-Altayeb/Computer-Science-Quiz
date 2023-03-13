@@ -22,10 +22,10 @@
             <div class="col-md-6">
                 <p> In order to start Quiz, Please note the following</p>
                 <ul>
-                    <li> First: type in your name and a number of how many questions would you like to take in the below
+                    <li> Please type in your name and a number of how many questions would you like to take in the aside
                         form</li>
                     <li> Please note tat you have one minute to answer the question</li>
-                    <li> Your score will be compared to the highest score, and the both will be displayed</li>
+                    <li> Your score will be displayed once time is over Or all questions are answered</li>
                 </ul>
             </div>
             <form class=" col-md-6" id="form">
@@ -47,40 +47,36 @@
             </div>
         </div>
         <div class="row">
-            <div class="wrapper">
-                <div class="header">
-                    <h1 class="title">Test Your knowledge</h1>
-                    <h1 class="title">In</h1>
-                    <h2 class="title" id="category">
-                        <!--title will be inserted here from the api -->
-                    </h2>
-                    <h2 class="title">-----------</h2>
+            <div class="header">
+                <h1 class="title">Test Your knowledge</h1>
+                <h1 class="title">In</h1>
+                <h2 class="title" id="category">
+                    <!--title will be inserted here from the api -->
+                </h2>
+                <h2 class="title">-----------</h2>
+            </div>
+            <div class="body">
+                <div class="question" id="question">
+                    <!--Question will be inserted here from the api -->
                 </div>
-                <div class="body">
-                    <div class="question" id="question">
-                        <!--Question will be inserted here from the api -->
-                    </div>
-                    <div class="questions-number">
-                        <span id="question-counter"></span>/<span id="question-sum"></span>
-                    </div>
-                    <div class="answers">
-                        <!-- 4 answers will be inserted here from the api  -->
-                    </div>
-                    <div id="alert">
-                    </div>
+                <div class="questions-number">
+                    <span id="question-counter"></span>/<span id="question-sum"></span>
                 </div>
-                <div class="footer">
-                    <button type="button" id="check-answer" >submit Answer</button>
-                    <button type="button" id="play-again">Play Again!</button>
+                <div class="answers">
+                    <!-- 4 answers will be inserted here from the api  -->
                 </div>
-                <div class="scoreArea">
-                    <p class="scores">correct Answers <span id="correct">0</span></p>
-                    <p class="scores">incorrect Answers <span id="incorrect">0</span></p>
+                <div id="alert">
                 </div>
             </div>
-
+            <div class="footer">
+                <button type="button" id="check-answer">submit Answer</button>
+                <button type="button" id="play-again">Play Again!</button>
+            </div>
+            <div class="scoreArea">
+                <p class="scores">correct Answers <span id="correct">0</span></p>
+                <p class="scores">incorrect Answers <span id="incorrect">0</span></p>
+            </div>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

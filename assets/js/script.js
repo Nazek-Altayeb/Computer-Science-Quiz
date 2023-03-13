@@ -138,7 +138,7 @@ function filInUserInfo(){
  }
 
  /**
- * increase either the correct-answer-counter or wrong-answer-counter each time a question is answered.
+ * increase either the correct-answer-counter or wrong-answer-counter each time a question is being answered.
  * alert user with a message if no answer is selected.
  */
 function checkAnswer() {
@@ -162,7 +162,7 @@ function checkAnswer() {
 
 /**
  * de-select other answers when one answer is selected
- * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified according to the logic needs 
+ * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  but i make one change so the function suits my project's logic 
  */
 
 function selectAnswer() {
