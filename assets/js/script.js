@@ -20,6 +20,15 @@ let countdown = document.getElementById('count-down-timer');
 let form = document.getElementById('form');
 let startQuizBtn = document.getElementById('start-quiz-button');
 
+/**
+ * execute the following on DOM load
+ * 1 - load a number of questions from the API according to what the user has entered in the quiz form.
+ * 2 - disable form inputs after entering data and pressing on 'start quiz'.
+ * 3 - calculate the quiz duration (in minutes) according to the number of questions the user has typed in the quiz form.
+ * 4 - invoke checkAnswer function upon user click (applicable  only when user select an answer).
+ * 5 - invoke playAgain function upon user click (visible only when user finishes answering all questions).
+ * 6 - start quiz time count down after clicking on 'start quiz'
+ */
 document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -30,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(countDown,1000);
         intervalId = setInterval(countDown,1000);
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
-        loadQuestion();
+        loadData();
         _checkBtn.addEventListener('click', checkAnswer);
         _playAgainBtn.addEventListener('click', playAgain);
         totalQ.textContent = totalQuestions;
@@ -44,9 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 });
-
-
-async function loadQuestion() {
+/**
+ * Load data from open TRIVIA Api 
+ */
+async function loadData() {
     answers.innerHTML = '';
     question.innerHTML = '';
     alert.innerHTML = "";
@@ -55,7 +65,11 @@ async function loadQuestion() {
     displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
 }
-
+/**
+ * 1 - calculate quiz duration
+ * 2 - count down
+ * 3 - stop the quiz and display score when time is over
+ */
 var countDown =  () => {
         let scoreMsg = document.createElement('p');
         const minutes = Math.floor(time / 60);
@@ -72,10 +86,16 @@ var countDown =  () => {
          }
 } 
 
+/**
+ * save user inputs
+ */
 function filInUserInfo(){
      userName = document.getElementById('user-name').value;
      enteredNumberOfQuestions = document.getElementById('number-of-questions').value;        
 }
+/**
+ * create html element to display the quiz category
+ */
  function displayCategory(data) {
      let category = document.getElementById('category');
      let ctg = document.createElement('span');
@@ -84,6 +104,9 @@ function filInUserInfo(){
      category.appendChild(ctg);
 }
 
+/**
+ * create new elements to display the loaded question and it's answers
+ */
  function DisplayQuestionAndAnswers(data) {
      let question = document.getElementById('question');
      let ques = document.createElement("h2");
@@ -126,6 +149,9 @@ function selectAnswer() {
      });
 }
 
+/**
+ * increase either the correct-answer-counter or wrong-answer-counter each time a new answer is selected
+ */
 function checkAnswer() {
     let message = document.createElement('p');
     _checkBtn.disabled = true;
@@ -144,6 +170,9 @@ function checkAnswer() {
     }
 }
 
+/**
+ * display the user final score 
+ */
 function countCorrectAndIncorrectAnswers() {
     let scoreMessage = document.createElement('p');
     askedQuestions++;
@@ -163,11 +192,14 @@ function countCorrectAndIncorrectAnswers() {
         clearInterval(intervalId); 
     } else {
         setTimeout(() => {
-            loadQuestion();
+            loadData();
         }, 1000);
     }
 }
 
+/**
+ * reset quiz-score and stop-watch
+ */
 function playAgain() {
     correctScore = askedQuestions = incorrectScore = 0;
     alert.innerHTML = "";
@@ -178,7 +210,7 @@ function playAgain() {
     questionCounter.textContent = askedQuestions;
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
-    loadQuestion();   
+    loadData();   
     time = quizDuration*60;      
     setInterval(countDown, 1000);
 }
