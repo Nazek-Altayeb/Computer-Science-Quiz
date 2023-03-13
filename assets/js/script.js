@@ -22,12 +22,12 @@ let startQuizBtn = document.getElementById('start-quiz-button');
 
 /**
  * execute the following on DOM load
- * 1 - load a number of questions from the API according to what the user has entered in the quiz form.
- * 2 - disable form inputs after entering data and pressing on 'start quiz'.
- * 3 - calculate the quiz duration (in minutes) according to the number of questions the user has typed in the quiz form.
+ * 1 - load a number of questions from the API according to what the user has entered in the quiz-form.
+ * 2 - prevent entering new data after pressing on 'start quiz'.
+ * 3 - calculate the quiz duration (in minutes) according to the number of questions the user has typed in the quiz-form.
  * 4 - invoke checkAnswer function upon user click (applicable  only when user select an answer).
  * 5 - invoke playAgain function upon user click (visible only when user finishes answering all questions).
- * 6 - start quiz time count down after clicking on 'start quiz'
+ * 6 - start quiz stop-watch after clicking on 'start-quiz'
  */
 document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
@@ -67,7 +67,7 @@ async function loadData() {
 }
 /**
  * 1 - calculate quiz duration
- * 2 - count down
+ * 2 - start count down
  * 3 - stop the quiz and display score when time is over
  */
 var countDown =  () => {
@@ -87,7 +87,7 @@ var countDown =  () => {
 } 
 
 /**
- * save user inputs
+ * save user's data
  */
 function filInUserInfo(){
      userName = document.getElementById('user-name').value;
@@ -133,8 +133,8 @@ function filInUserInfo(){
  }
 
 /**
- * de-select other answers when select one of them
- * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified according to my logic needs 
+ * de-select other answers when one answer is selected
+ * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  and modified according to the logic needs 
  */
 
 function selectAnswer() {
@@ -150,7 +150,8 @@ function selectAnswer() {
 }
 
 /**
- * increase either the correct-answer-counter or wrong-answer-counter each time a new answer is selected
+ * increase either the correct-answer-counter or wrong-answer-counter each time a new answer is selected.
+ * alert user with a message if no answer is selected.
  */
 function checkAnswer() {
     let message = document.createElement('p');
@@ -171,7 +172,8 @@ function checkAnswer() {
 }
 
 /**
- * display the user final score 
+ * display the user final score if all questions are answered, otherwise load the next question
+ * The idea of the function below is found here https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , but it has been extended and changed a bit according to the logic needs
  */
 function countCorrectAndIncorrectAnswers() {
     let scoreMessage = document.createElement('p');
@@ -181,24 +183,21 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-        // for some reason, this line of code  is not executing (the time is not reseting to 00:00)
-       // clearInterval(intervalId); 
-       setTimeout(() => {}, 5000);
+       setTimeout(() => {}, 1000);
         _playAgainBtn.style.display = "block";
         _checkBtn.style.display = "none";        
         let score = correctScore/totalQuestions;
-        scoreMessage.textContent= `Your score is ${score}</p>`;
+        scoreMessage.textContent= `Your score is ${score}`;
         alert.appendChild(scoreMessage);  
         clearInterval(intervalId); 
     } else {
-        setTimeout(() => {
-            loadData();
-        }, 1000);
+        setTimeout(() => { loadData();}, 1000);
     }
 }
 
 /**
  * reset quiz-score and stop-watch
+ * The idea of the function below is found here https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , but it has been extended and changed a bit according to the logic needs
  */
 function playAgain() {
     correctScore = askedQuestions = incorrectScore = 0;
