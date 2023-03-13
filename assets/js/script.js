@@ -53,8 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 });
+
 /**
- * Load data from open TRIVIA Api 
+ * 1 - empty html page content
+ * 2 - Load data from open TRIVIA Api 
  */
 async function loadData() {
     answers.innerHTML = '';
@@ -66,6 +68,7 @@ async function loadData() {
     displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
 }
+
 /**
  * 1 - calculate quiz duration
  * 2 - start count down
@@ -94,6 +97,7 @@ function filInUserInfo(){
      userName = document.getElementById('user-name').value;
      enteredNumberOfQuestions = document.getElementById('number-of-questions').value;        
 }
+
 /**
  * create html element to display the quiz category
  */
@@ -162,14 +166,17 @@ function checkAnswer() {
  */
 
 function selectAnswer() {
-     answers.querySelectorAll('p').forEach((answer) => {
-        answer.addEventListener('click', () => {
+    let allAnswers = answers.getElementsByTagName('p')[0];
+    let allSelectedAnswers = answers.getElementsByClassName('selected')[0];
+    
+      answers.querySelectorAll('p').forEach((answer) => {
+         answer.addEventListener('click', () => {
              if(answers.querySelector('.selected')){
-                 const active = answers.querySelector('.selected');                
-                 active.classList.remove('selected');
+              const active = answers.querySelector('.selected');                
+                active.classList.remove('selected');
             }
              answer.classList.add('selected');
-         });
+          });
      });
 }
 
