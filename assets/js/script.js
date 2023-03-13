@@ -52,12 +52,12 @@ async function loadQuestion() {
     alert.innerHTML = "";
     let response = await fetch(`${url}`) 
     let data = await response.json();     
-    showCategory(data.results[0]);
+    displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
 }
 
 var countDown =  () => {
-        let countDownMessage = document.createElement('p');
+        let scoreMsg = document.createElement('p');
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         countdown.textContent = minutes + ":" + seconds;
@@ -67,22 +67,21 @@ var countDown =  () => {
             _playAgainBtn.style.display = "block";
             _checkBtn.style.display = "none";
             let score = correctScore/totalQuestions;
-            countDownMessage.textContent = `Your score is ${score}`;
-            alert.appendChild(countDownMessage);
+            scoreMsg.textContent = `Your score is ${score}`;
+            alert.appendChild(scoreMsg);
          }
 } 
 
 function filInUserInfo(){
-    userName = document.getElementById('user-name').value;
-    enteredNumberOfQuestions = document.getElementById('number-of-questions').value;        
+     userName = document.getElementById('user-name').value;
+     enteredNumberOfQuestions = document.getElementById('number-of-questions').value;        
 }
- function showCategory(data) {
+ function displayCategory(data) {
      let category = document.getElementById('category');
      let ctg = document.createElement('span');
      ctg.classList.add('category');
      ctg.textContent = data.category;
      category.appendChild(ctg);
-    // category.innerHTML = `<span class = "category"> ${data.category} </span> <br>`
 }
 
  function DisplayQuestionAndAnswers(data) {
@@ -99,16 +98,15 @@ function filInUserInfo(){
      ques.textContent =  data.question;
      question.appendChild(ques);
 
-    answersList.forEach((answer)=>{
+     answersList.forEach((answer)=>{
         let paragraph = document.createElement("p");
         let span = document.createElement("span")
         span.textContent = answer;
         paragraph.appendChild(span);
         answers.appendChild(paragraph);
-    });
+     });
 
      selectAnswer();
-     
  }
 
 /**
