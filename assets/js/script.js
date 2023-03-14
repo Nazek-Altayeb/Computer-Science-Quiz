@@ -110,7 +110,7 @@ function filInUserInfo(){
 }
 
 /**
- * create new elements to display the loaded question and it's answers
+ * create new elements to display the loaded question and it's related answers
  */
  function DisplayQuestionAndAnswers(data) {
      let question = document.getElementById('question');
@@ -144,7 +144,8 @@ function filInUserInfo(){
 function checkAnswer() {
     let message = document.createElement('p');
     let allAnswers = answers.getElementsByClassName('selected')[0];
-    let selectedAnswer = allAnswers.getElementsByTagName('span')[0].textContent;
+    // bug : when no answer is the selected, the following throw exception of 'Cannot read properties of undefined getElementsByTagName'
+    let selectedAnswer = allAnswers.getElementsByTagName('span')[0].textContent ;
     _checkBtn.disabled = true;
     if (allAnswers) {       
         if (selectedAnswer == correctAnswer) {
@@ -154,7 +155,7 @@ function checkAnswer() {
         }
         countCorrectAndIncorrectAnswers();
     } else {
-        message.textContent = "Please select an answer!";
+        message.textContent = 'Please select an answer!';
         alert.appendChild(message);
         _checkBtn.disabled = false;
     }
@@ -162,7 +163,7 @@ function checkAnswer() {
 
 /**
  * de-select other answers when one answer is selected
- * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  but i make one change so the function suits my project's logic 
+ * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  but i make one change so the function suits my project's my logic 
  */
 
 function selectAnswer() {
@@ -198,9 +199,10 @@ function countCorrectAndIncorrectAnswers() {
         let score = correctScore/totalQuestions;
         scoreMessage.textContent= `Your score is ${score}`;
         alert.appendChild(scoreMessage);  
+        // bug : timer is not reseting it's self when all questions are answered
         clearInterval(intervalId); 
     } else {
-        setTimeout(() => { loadData();}, 1000);
+        setTimeout(() => { loadData();}, 300);
     }
 }
 
