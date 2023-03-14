@@ -75,7 +75,7 @@ async function loadData() {
  * 3 - stop the quiz and display score when time is over
  */
 var countDown =  () => {
-        let scoreMsg = document.createElement('p');
+       // let scoreMsg = document.createElement('p');
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         countdown.textContent = minutes + ":" + seconds;
@@ -84,9 +84,9 @@ var countDown =  () => {
             clearInterval(intervalId);
             _playAgainBtn.style.display = "block";
             _checkBtn.style.display = "none";
-            let score = correctScore/totalQuestions;
-            scoreMsg.textContent = `Your score is ${score}`;
-            alert.appendChild(scoreMsg);
+            // let score = correctScore/totalQuestions;
+            // scoreMsg.textContent = `Your score is ${score}`;
+            // alert.appendChild(scoreMsg);
          }
 } 
 
