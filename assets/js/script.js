@@ -151,7 +151,6 @@ function DisplayQuestionAndAnswers(data) {
  * alert user with a message if no answer is selected.
  */
 function checkAnswer() {
-     // fixed bug : when no answer is the selected, the following throw exception of 'Cannot read properties of undefined getElementsByTagName
      alert.innerHTML = "";
     let message = document.createElement('p');
     if (allAnswers = answers.getElementsByClassName('selected')[0]) {

@@ -54,11 +54,37 @@ display score : sores are displayed in two cases, after user finishes answering 
 ## Technologies
 ### Languages 
 * [HTML5](https://en.wikipedia.org/wiki/HTML5)
+  * symantic elements of the HTML5 are used to build the website.
 * [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  * Some useful css rules has been added to fulfil the intend appreance of the page and to guarantee responsiveness feature 
 * [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+  * Dynamic interaction between the client and browser is done within the js file.
 
 ### Libraries
 * [Bootstrap](https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css)
 * [GitHub](https://github.com/)
 * [Google Fonts](https://fonts.google.com/)
 * [Font Awesome](https://fontawesome.com/)
+
+## Testing
+### Validation
+* W3C Markup Validator
+
+* W3C CSS Validator
+
+### Interactivity
+
+### Performance
+
+## Fixed bugs
+* Timer keep in counting down even if the user finishes answering all questions.
+* If no answer is selected, the alert msg 'Please select an answer' is not displayed
+
+## Deployment
+
+### GitHub pages
+### Making a clone
+
+## Acknowledgement
+
+
