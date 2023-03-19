@@ -16,7 +16,7 @@ let _playAgainBtn = document.getElementById('play-again');
 let alert = document.getElementById('alert');
 let questionCounter = document.getElementById('question-counter');
 let totalQ = document.getElementById('question-sum');
-let countdown = document.getElementById('count-down-timer');
+let timer = document.getElementById('count-down-timer');
 let form = document.getElementById('form');
 let startQuizBtn = document.getElementById('start-quiz-button');
 
@@ -75,18 +75,18 @@ async function loadData() {
  * 3 - stop the quiz and display score when time is over
  */
 var countDown = () => {
-    // let scoreMsg = document.createElement('p');
+    let scoreMsg = document.createElement('p');
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    countdown.textContent = minutes + ":" + seconds;
+    timer.innerHTML = ` ${minutes} :  ${seconds} `;
     time--;
     if (time ==  0) {
         clearInterval(intervalId);
         _playAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
-        // let score = correctScore/totalQuestions;
-        // scoreMsg.textContent = `Your score is ${score}`;
-        // alert.appendChild(scoreMsg);
+        let score = correctScore/totalQuestions;
+        scoreMsg.textContent = `Your score is ${score}`;
+        alert.appendChild(scoreMsg);
     }
 }
 
@@ -197,13 +197,14 @@ function countCorrectAndIncorrectAnswers() {
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
         // setTimeout(() => {}, 1000);
+        clearInterval(intervalId);
         _playAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
         scoreMessage.textContent = `Your score is ${score}`;
         alert.appendChild(scoreMessage);
         // bug : timer is not reseting it's self when all questions are answered
-        clearInterval(intervalId);
+        // clearInterval(intervalId);
     } else {
         setTimeout(() => {
             loadData();
