@@ -6,10 +6,10 @@ let url;
 let userName;
 let quizDuration;
 let time;
-let intervalId;
+let intervalId = setInterval(countDown, 1000);;
 
 let answers = document.querySelector('.answers');
-let _checkBtn = document.getElementById('check-answer');
+let submitAnswerBtn = document.getElementById('check-answer');
 let correct = document.getElementById('correct');
 let inCorrect = document.getElementById('incorrect');
 let _playAgainBtn = document.getElementById('play-again');
@@ -35,23 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
         filInUserInfo();
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
-        time = quizDuration*60;
-        setInterval(countDown,1000);
-        intervalId = setInterval(countDown,1000);
+        time = quizDuration * 60;
+        // setInterval(countDown,1000);       
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
         loadData();
-        _checkBtn.addEventListener('click', checkAnswer);
+        submitAnswerBtn.addEventListener('click', checkAnswer);
         _playAgainBtn.addEventListener('click', playAgain);
         totalQ.textContent = totalQuestions;
         questionCounter.textContent = askedQuestions;
         alert.innerHTML = "";
         _playAgainBtn.style.display = "none";
-        _checkBtn.style.display = "block";
-        startQuizBtn.style.display ="none";
+        submitAnswerBtn.style.display = "block";
+        startQuizBtn.style.display = "none";
         document.getElementById("user-name").disabled = true;
         document.getElementById("number-of-questions").disabled = true;
+        intervalId = setInterval(countDown, 1000);
     });
-    
+
 });
 
 /**
@@ -63,10 +63,11 @@ async function loadData() {
     question.innerHTML = '';
     alert.innerHTML = "";
     category.innerHTML = '';
-    let response = await fetch(`${url}`) 
-    let data = await response.json();     
+    let response = await fetch(`${url}`)
+    let data = await response.json();
     displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
+    setInterval(countDown, 1000);
 }
 
 /**
@@ -74,111 +75,114 @@ async function loadData() {
  * 2 - start count down
  * 3 - stop the quiz and display score when time is over
  */
-var countDown =  () => {
-       // let scoreMsg = document.createElement('p');
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        countdown.textContent = minutes + ":" + seconds;
-        time--;
-        if (minutes < 0 ) {
-            clearInterval(intervalId);
-            _playAgainBtn.style.display = "block";
-            _checkBtn.style.display = "none";
-            // let score = correctScore/totalQuestions;
-            // scoreMsg.textContent = `Your score is ${score}`;
-            // alert.appendChild(scoreMsg);
-         }
-} 
+var countDown = () => {
+    // let scoreMsg = document.createElement('p');
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    countdown.textContent = minutes + ":" + seconds;
+    time--;
+    if (minutes < 0) {
+        clearInterval(intervalId);
+        _playAgainBtn.style.display = "block";
+        submitAnswerBtn.style.display = "none";
+        // let score = correctScore/totalQuestions;
+        // scoreMsg.textContent = `Your score is ${score}`;
+        // alert.appendChild(scoreMsg);
+    }
+}
 
 /**
  * save user's data
  */
-function filInUserInfo(){
-     userName = document.getElementById('user-name').value;
-     enteredNumberOfQuestions = document.getElementById('number-of-questions').value;        
+function filInUserInfo() {
+    userName = document.getElementById('user-name').value;
+    enteredNumberOfQuestions = document.getElementById('number-of-questions').value;
 }
 
 /**
  * create html element to display the quiz category
  */
- function displayCategory(data) {
-     let category = document.getElementById('category');
-     let ctg = document.createElement('span');
-     ctg.classList.add('category');
-     ctg.textContent = data.category;
-     category.appendChild(ctg);
+function displayCategory(data) {
+    let category = document.getElementById('category');
+    let ctg = document.createElement('span');
+    ctg.classList.add('category');
+    ctg.textContent = data.category;
+    category.appendChild(ctg);
 }
 
 /**
  * create new elements to display the loaded question and it's related answers
  */
- function DisplayQuestionAndAnswers(data) {
-     let question = document.getElementById('question');
-     let ques = document.createElement("h2");
-     let incorrectAnswer = data.incorrect_answers;
-     let answersList = incorrectAnswer;
-     
-     _checkBtn.disabled = false;
+function DisplayQuestionAndAnswers(data) {
+    let question = document.getElementById('question');
+    let ques = document.createElement("h2");
+    let incorrectAnswer = data.incorrect_answers;
+    let answersList = incorrectAnswer;
 
-     correctAnswer = data.correct_answer;
-     answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
-     
-     ques.textContent =  data.question;
-     question.appendChild(ques);
+    submitAnswerBtn.disabled = false;
 
-     answersList.forEach((answer)=>{
+    correctAnswer = data.correct_answer;
+    answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
+
+    ques.textContent = data.question;
+    question.appendChild(ques);
+
+    answersList.forEach((answer) => {
         let paragraph = document.createElement("p");
         let span = document.createElement("span")
         span.textContent = answer;
         paragraph.appendChild(span);
         answers.appendChild(paragraph);
-     });
+    });
 
-     selectAnswer();
- }
+    selectAnswer();
+}
 
- /**
+/**
  * increase either the correct-answer-counter or wrong-answer-counter each time a question is being answered.
  * alert user with a message if no answer is selected.
  */
 function checkAnswer() {
+     // fixed bug : when no answer is the selected, the following throw exception of 'Cannot read properties of undefined getElementsByTagName
+     alert.innerHTML = "";
     let message = document.createElement('p');
-    let allAnswers = answers.getElementsByClassName('selected')[0];
-    // bug : when no answer is the selected, the following throw exception of 'Cannot read properties of undefined getElementsByTagName'
-    let selectedAnswer = allAnswers.getElementsByTagName('span')[0].textContent ;
-    _checkBtn.disabled = true;
-    if (allAnswers) {       
-        if (selectedAnswer == correctAnswer) {
-            correctScore++;
-        } else {
-            incorrectScore++;
+    if (allAnswers = answers.getElementsByClassName('selected')[0]) {
+        let allAnswers = answers.getElementsByClassName('selected')[0];
+        let selectedAnswer = allAnswers.getElementsByTagName('span')[0].textContent;
+        submitAnswerBtn.disabled = true;
+        if (allAnswers) {
+            if (selectedAnswer == correctAnswer) {
+                correctScore++;
+            } else {
+                incorrectScore++;
+            }
+            countCorrectAndIncorrectAnswers();
         }
-        countCorrectAndIncorrectAnswers();
     } else {
         message.textContent = 'Please select an answer!';
         alert.appendChild(message);
-        _checkBtn.disabled = false;
+        submitAnswerBtn.disabled = false;
     }
+
 }
 
 /**
  * de-select other answers when one answer is selected
  * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  but i make one change so the function suits my project's my logic 
  */
-
 function selectAnswer() {
     let allAnswers = answers.getElementsByTagName('p')[0];
     let allSelectedAnswers = answers.getElementsByClassName('selected')[0];
-    
-      answers.querySelectorAll('p').forEach((answer) => {
-         answer.addEventListener('click', () => {
-             if(answers.querySelector('.selected')){
-              const active = answers.querySelector('.selected');                
+
+    answers.querySelectorAll('p').forEach((answer) => {
+        answer.addEventListener('click', () => {
+            if (answers.querySelector('.selected')) {
+                const active = answers.querySelector('.selected');
                 active.classList.remove('selected');
             }
-             answer.classList.add('selected');
-          });
-     });
+            answer.classList.add('selected');
+        });
+    });
 }
 
 /**
@@ -193,16 +197,18 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-       setTimeout(() => {}, 1000);
+        setTimeout(() => {}, 1000);
         _playAgainBtn.style.display = "block";
-        _checkBtn.style.display = "none";        
-        let score = correctScore/totalQuestions;
-        scoreMessage.textContent= `Your score is ${score}`;
-        alert.appendChild(scoreMessage);  
+        submitAnswerBtn.style.display = "none";
+        let score = correctScore / totalQuestions;
+        scoreMessage.textContent = `Your score is ${score}`;
+        alert.appendChild(scoreMessage);
         // bug : timer is not reseting it's self when all questions are answered
-        clearInterval(intervalId); 
+        clearInterval(intervalId);
     } else {
-        setTimeout(() => { loadData();}, 300);
+        setTimeout(() => {
+            loadData();
+        }, 300);
     }
 }
 
@@ -214,13 +220,13 @@ function playAgain() {
     correctScore = askedQuestions = incorrectScore = 0;
     alert.innerHTML = "";
     _playAgainBtn.style.display = "none";
-    _checkBtn.style.display = "block";
-    _checkBtn.disabled = false;
+    submitAnswerBtn.style.display = "block";
+    submitAnswerBtn.disabled = false;
     totalQ.textContent = totalQuestions;
     questionCounter.textContent = askedQuestions;
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
-    loadData();   
-    time = quizDuration*60;      
+    loadData();
+    time = quizDuration * 60;
     setInterval(countDown, 1000);
 }
