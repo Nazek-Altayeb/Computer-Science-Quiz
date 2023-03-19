@@ -85,6 +85,8 @@ display score : sores are displayed in two cases, after user finishes answering 
 ### GitHub pages
 ### Making a clone
 
+## Credits
+
 ## Acknowledgement
 
 
