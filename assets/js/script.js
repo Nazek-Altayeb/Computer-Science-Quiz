@@ -80,8 +80,8 @@ var countDown = () => {
     const seconds = time % 60;
     timer.innerHTML = ` ${minutes} :  ${seconds} `;
     time--;
-    if (time ==  0) {
-        clearInterval(intervalId);
+    if (time <  0) {
+        stopCountDown();
         _playAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore/totalQuestions;
@@ -89,6 +89,10 @@ var countDown = () => {
         alert.innerHTML = "";
         alert.appendChild(scoreMsg);
     }
+}
+
+function stopCountDown(){
+    clearInterval(intervalId);
 }
 
 /**
@@ -198,14 +202,13 @@ function countCorrectAndIncorrectAnswers() {
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
         // setTimeout(() => {}, 1000);
-        clearInterval(intervalId);
         _playAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
         scoreMessage.textContent = `Your score is ${score}`;
         alert.appendChild(scoreMessage);
         // bug : timer is not reseting it's self when all questions are answered
-        // clearInterval(intervalId);
+       stopCountDown();
     } else {
         setTimeout(() => {
             loadData();
