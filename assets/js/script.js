@@ -7,7 +7,9 @@ let userName;
 let quizDuration;
 let time;
 let intervalId;
+let level;
 
+let difficulty = document.getElementById('difficulty');
 let answers = document.querySelector('.answers');
 let submitAnswerBtn = document.getElementById('check-answer');
 let correct = document.getElementById('correct');
@@ -36,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
         time = quizDuration * 60;
-        // setInterval(countDown,1000);       
-        url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=medium&type=multiple`;
+        // setInterval(countDown,1000);   
+        level =  difficulty.value;
+        url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=${level}&type=multiple`;
         loadData();
         submitAnswerBtn.addEventListener('click', checkAnswer);
         _playAgainBtn.addEventListener('click', playAgain);
@@ -49,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startQuizBtn.style.display = "none";
         document.getElementById("user-name").disabled = true;
         document.getElementById("number-of-questions").disabled = true;
+        document.getElementById("difficulty").disabled = true;
     });
 
 });
@@ -201,13 +205,13 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-        // setTimeout(() => {}, 1000);
+        //setTimeout(() => {}, 1000);
         _playAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
         scoreMessage.textContent = `Your score is ${score}`;
         alert.appendChild(scoreMessage);
-        // bug : timer is not reseting it's self when all questions are answered
+        //bug : timer is not reseting it's self when all questions are answered
        stopCountDown();
     } else {
         setTimeout(() => {

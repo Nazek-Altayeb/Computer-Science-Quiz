@@ -31,12 +31,20 @@
             </div>
             <form class=" col-md-6" id="form">
                 <div class="form-group">
-                    <label for="user-name">Enter your Name:</label>
+                    <label for="user-name">Name</label>
                     <input type="text" class="form-control" id="user-name" required>
                 </div>
                 <div class="form-group">
-                    <label for="number-of-questions">Enter a number of Questions:</label>
+                    <label for="number-of-questions">Enter a number of Questions</label>
                     <input type="number" class="form-control" id="number-of-questions" required>
+                </div>
+                <div class="form-group">
+                    <select required class="form-select form-control"  id="difficulty" >
+                        <option selected>select quiz difficulty</option>
+                        <option id="easy">easy</option>
+                        <option id="medium">medium</option>
+                        <option id="hard">hard</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn" id="start-quiz-button" value="save">start quiz</button>
             </form>
