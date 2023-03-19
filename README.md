@@ -34,23 +34,31 @@ Basicly, Poppins is the font used and Sans-serif is the back-up font if Poppins 
 ## Features 
 ### Existing features
 
-*Quiz form*
-
+#### Quiz form
 start quiz form: user will be asked to type in his/her name and a number of how many question would he/she like to take in the quiz, this form is disabled once the user click on 'start quiz' button.
 
-*Load Data From API*
-
+#### Load Data From API
 display question and related answers: All are load from the api: https://opentdb.com/api_config.php, the number of question is determined by the input entered in the start quiz form.
 
-*Stop Watch*
-
+#### Stop Watch
 stop watch : a minute is given for each question to be answered, submiting answers will be disabled even if the user didn't finish.
 
-*Score accumulation* 
-
+#### Score accumulation
 display score : sores are displayed in two cases, after user finishes answering all given questions, or when time is over.
 
 ### Future-planned features
 * Display the highst score for the same level of difficulty.
 * specify fixed amount of time for every question.
-* Extend the quiz form options to select the answer type (True / False) besides the multiple options that already exist. 
+* Extend the quiz form options to select the answer type (True / False) besides the multiple options that already exist.
+
+## Technologies
+### Languages 
+* [HTML5](https://en.wikipedia.org/wiki/HTML5)
+* [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+
+### Libraries
+* [Bootstrap](https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css)
+* [GitHub](https://github.com/)
+* [Google Fonts](https://fonts.google.com/)
+* [Font Awesome](https://fontawesome.com/)
