@@ -6,7 +6,7 @@ let url;
 let userName;
 let quizDuration;
 let time;
-let intervalId = setInterval(countDown, 1000);;
+let intervalId;
 
 let answers = document.querySelector('.answers');
 let submitAnswerBtn = document.getElementById('check-answer');
@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         startQuizBtn.style.display = "none";
         document.getElementById("user-name").disabled = true;
         document.getElementById("number-of-questions").disabled = true;
-        intervalId = setInterval(countDown, 1000);
     });
 
 });
@@ -67,7 +66,7 @@ async function loadData() {
     let data = await response.json();
     displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
-    setInterval(countDown, 1000);
+    intervalId = setInterval("countDown()", 1000);
 }
 
 /**
@@ -81,7 +80,7 @@ var countDown = () => {
     const seconds = time % 60;
     countdown.textContent = minutes + ":" + seconds;
     time--;
-    if (minutes < 0) {
+    if (time ==  0) {
         clearInterval(intervalId);
         _playAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
@@ -197,7 +196,7 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-        setTimeout(() => {}, 1000);
+        // setTimeout(() => {}, 1000);
         _playAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
@@ -228,5 +227,5 @@ function playAgain() {
     incorrect.textContent = incorrectScore;
     loadData();
     time = quizDuration * 60;
-    setInterval(countDown, 1000);
+    setInterval("countDown()", 1000);
 }
