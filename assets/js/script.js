@@ -86,6 +86,7 @@ var countDown = () => {
         submitAnswerBtn.style.display = "none";
         let score = correctScore/totalQuestions;
         scoreMsg.textContent = `Your score is ${score}`;
+        alert.innerHTML = "";
         alert.appendChild(scoreMsg);
     }
 }
