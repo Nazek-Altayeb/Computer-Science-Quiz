@@ -9,7 +9,8 @@
 body{
     min-height: 70vh;
     font-family: 'Poppins', sans-serif;
-    color: #000;   
+    color: #000;
+   
 }
 
 .container{
@@ -22,7 +23,7 @@ body{
     height: 100%;
     border-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 4px 2px #aaa783;
 }
 #start-quiz-button{
    margin-top: 2px;

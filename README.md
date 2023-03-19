@@ -1,5 +1,5 @@
 ## Project Objective
-People with Computer science background may examine their knowledge with this challenging quiz, a quiz where a specified number of questions are displayed according to a level of difficulty that is determinated by the competitor himself/herself.
+People with Computer science background may examine their knowledge with this challenging quiz, a quiz where a specified number of questions is displayed according to a level of difficulty that is determinated by the quiz taker himself/herself.
 
 ## User Experience
 ### Site owner goals
@@ -25,21 +25,32 @@ People with Computer science background may examine their knowledge with this ch
 * UX is easy to understand and use.  
 
 ### colors
-The Granny Apple is the color used as a background for the quiz area,
+The Granny Apple and Neutral Green are used as background colors for the quiz area and it's shadow
 the rest of the page remained white
 
 ### Typography 
 Basicly, Poppins is the font used and Sans-serif is the back-up font if Poppins fails to load.
 
 ## Features 
-### Quiz Form
-start quiz form: user will be asked to type in his/her name and a number of how many question would he/she like to take in the quiz, this form is disabled once the user click on 'start quiz' button 
+### Existing features
 
-### Load Data From API
-display question and related answers: All are load from the api: https://opentdb.com/api_config.php, the number of question is determined by the input entered in the start quiz form
+*Quiz form*
 
-### Stop Watch
+start quiz form: user will be asked to type in his/her name and a number of how many question would he/she like to take in the quiz, this form is disabled once the user click on 'start quiz' button.
+
+*Load Data From API*
+
+display question and related answers: All are load from the api: https://opentdb.com/api_config.php, the number of question is determined by the input entered in the start quiz form.
+
+*Stop Watch*
+
 stop watch : a minute is given for each question to be answered, submiting answers will be disabled even if the user didn't finish.
 
-### Score accumulation 
-display score : sores are displayed in two cases, after user finishes answering all given questions, or when time is over. 
+*Score accumulation* 
+
+display score : sores are displayed in two cases, after user finishes answering all given questions, or when time is over.
+
+### Future-planned features
+* Display the highst score for the same level of difficulty.
+* specify fixed amount of time for every question.
+* Extend the quiz form options to select the answer type (True / False) besides the multiple options that already exist. 
