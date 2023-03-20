@@ -37,8 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filInUserInfo();
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
-        time = quizDuration * 60;
-        // setInterval(countDown,1000);   
+        time = quizDuration * 60;  
         level =  difficulty.value;
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=${level}&type=multiple`;
         loadData();
@@ -53,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("user-name").disabled = true;
         document.getElementById("number-of-questions").disabled = true;
         document.getElementById("difficulty").disabled = true;
+        intervalId = setInterval(countDown, 1000);
     });
 
 });
@@ -70,7 +70,6 @@ async function loadData() {
     let data = await response.json();
     displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
-    intervalId = setInterval("countDown()", 1000);
 }
 
 /**
@@ -81,9 +80,15 @@ async function loadData() {
 var countDown = () => {
     let scoreMsg = document.createElement('p');
     const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
+    let seconds = time % 60;
+
+    if (String(seconds).length === 1){
+        seconds = '0' + seconds;
+    } 
+
     timer.innerHTML = ` ${minutes} :  ${seconds} `;
     time--;
+    
     if (time <  0) {
         stopCountDown();
         _playAgainBtn.style.display = "block";
@@ -96,6 +101,7 @@ var countDown = () => {
 }
 
 function stopCountDown(){
+    console.log("stop");
     clearInterval(intervalId);
 }
 
@@ -235,5 +241,5 @@ function playAgain() {
     incorrect.textContent = incorrectScore;
     loadData();
     time = quizDuration * 60;
-    setInterval("countDown()", 1000);
+    intervalId = setInterval(countDown, 1000);
 }
