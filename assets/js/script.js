@@ -216,7 +216,6 @@ function countCorrectAndIncorrectAnswers() {
         let score = correctScore / totalQuestions;
         scoreMessage.textContent = `Your score is ${score}`;
         alert.appendChild(scoreMessage);
-        //bug : timer is not reseting it's self when all questions are answered
        stopCountDown();
     } else {
         setTimeout(() => {
