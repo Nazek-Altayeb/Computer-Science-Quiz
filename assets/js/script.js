@@ -162,7 +162,7 @@ function htmlDecode(input) {
  */
 function DisplayQuestionAndAnswers(data) {
     question = document.getElementById('question');
-    let ques = document.createElement("h2");
+    let ques = document.createElement("h4");
     let incorrectAnswer = data.incorrect_answers;
     let answersList = incorrectAnswer;
 
