@@ -14,7 +14,6 @@ let time;
 let intervalId;
 let level;
 
-// const difficulty = document.getElementById('difficulty');
 const easy = document.getElementById('easy');
 const medium = document.getElementById('medium');
 const hard = document.getElementById('hard');
