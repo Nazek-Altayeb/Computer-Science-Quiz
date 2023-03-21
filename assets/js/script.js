@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         filInUserInfo();
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
-        time = quizDuration * 60;  
-        level =  difficulty.value;
+        time = quizDuration * 60;
+        level = difficulty.value;
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=${level}&type=multiple`;
         loadData();
         submitAnswerBtn.addEventListener('click', checkAnswer);
@@ -68,6 +68,7 @@ async function loadData() {
     category.innerHTML = '';
     let response = await fetch(`${url}`)
     let data = await response.json();
+    console.log(data);
     displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
 }
@@ -82,25 +83,25 @@ var countDown = () => {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
 
-    if (String(seconds).length === 1){
+    if (String(seconds).length === 1) {
         seconds = '0' + seconds;
-    } 
+    }
 
     timer.innerHTML = ` ${minutes} :  ${seconds} `;
     time--;
-    
-    if (time <  0) {
+
+    if (time < 0) {
         stopCountDown();
         _playAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
-        let score = correctScore/totalQuestions;
+        let score = correctScore / totalQuestions;
         scoreMsg.textContent = `Your score is ${score}`;
         alert.innerHTML = "";
         alert.appendChild(scoreMsg);
     }
 }
 
-function stopCountDown(){
+function stopCountDown() {
     console.log("stop");
     clearInterval(intervalId);
 }
@@ -124,6 +125,11 @@ function displayCategory(data) {
     category.appendChild(ctg);
 }
 
+function htmlDecode(input) {
+    let doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
+}
+
 /**
  * create new elements to display the loaded question and it's related answers
  */
@@ -138,13 +144,13 @@ function DisplayQuestionAndAnswers(data) {
     correctAnswer = data.correct_answer;
     answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
 
-    ques.textContent = data.question;
+    ques.innerHTML =  htmlDecode(data.question);
     question.appendChild(ques);
 
     answersList.forEach((answer) => {
         let paragraph = document.createElement("p");
         let span = document.createElement("span")
-        span.textContent = answer;
+        span.textContent = htmlDecode(answer);
         paragraph.appendChild(span);
         answers.appendChild(paragraph);
     });
@@ -157,7 +163,7 @@ function DisplayQuestionAndAnswers(data) {
  * alert user with a message if no answer is selected.
  */
 function checkAnswer() {
-     alert.innerHTML = "";
+    alert.innerHTML = "";
     let message = document.createElement('p');
     if (allAnswers = answers.getElementsByClassName('selected')[0]) {
         let allAnswers = answers.getElementsByClassName('selected')[0];
@@ -216,7 +222,7 @@ function countCorrectAndIncorrectAnswers() {
         let score = correctScore / totalQuestions;
         scoreMessage.textContent = `Your score is ${score}`;
         alert.appendChild(scoreMessage);
-       stopCountDown();
+        stopCountDown();
     } else {
         setTimeout(() => {
             loadData();
