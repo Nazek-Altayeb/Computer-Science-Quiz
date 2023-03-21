@@ -130,7 +130,9 @@ function displayCategory(data) {
     ctg.textContent = data.category;
     category.appendChild(ctg);
 }
-
+/** 
+ * Note: The below function is added by the Tutor while supproting in resolving a bug (strings contain special charactors when displayed)
+*/
 function htmlDecode(input) {
     let doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.textContent;
