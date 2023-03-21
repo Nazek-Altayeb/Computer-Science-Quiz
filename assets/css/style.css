@@ -11,7 +11,7 @@ body {
     min-height: 70vh;
     font-family: 'Poppins', sans-serif;
     color: #000;
-    background-color: rgb(223, 223, 206) !important;
+    background-color: #abaf99 !important;
 
 }
 
@@ -27,7 +27,7 @@ body {
     height: 100%;
     border-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
-    box-shadow: 7px 7px 7px 4px #aaa783 ;
+    box-shadow: 10px 10px 10px 6px #aaa783 ;
 }
 
 .vertical-center {
