@@ -11,6 +11,7 @@ body {
     min-height: 70vh;
     font-family: 'Poppins', sans-serif;
     color: #000;
+    background-color: rgb(223, 223, 206) !important;
 
 }
 

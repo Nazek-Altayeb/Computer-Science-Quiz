@@ -1,3 +1,4 @@
+/* Jshint esversion: 6*/
 let correctAnswer = "";
 let correctScore = incorrectScore = askedQuestions = 0;
 let totalQuestions;
