@@ -3,8 +3,8 @@ let correctAnswer = "";
 let correctScore  = 0;
 let incorrectScore = 0;
 let askedQuestions = 0;
-let question= "";
-let category= "";
+let question = "";
+let category = "";
 let totalQuestions;
 let enteredNumberOfQuestions;
 let url;
@@ -28,7 +28,7 @@ const totalQ = document.getElementById('question-sum');
 const timer = document.getElementById('count-down-timer');
 const form = document.getElementById('form');
 const startQuizBtn = document.getElementById('start-quiz-button');
-const questionAnswersArea = document.getElementById('question-answers-card');
+const questionAnswersArea = document.getElementById('question-answers-area');
 
 /**
  * execute the following on DOM load
