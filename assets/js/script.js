@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         quizDuration = totalQuestions;
         time = quizDuration * 60;
         getDifficultyLevel();
-        console.log(level);
         url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=${level}&type=multiple`;        
         loadData();
         submitAnswerBtn.addEventListener('click', checkAnswer);
@@ -86,7 +85,7 @@ async function loadData() {
 }
 
 /** 
- * Get the difficulty level
+ * Get the value of difficulty level from the user
 */
 function getDifficultyLevel(){
     if(easy.checked == true){
@@ -143,7 +142,7 @@ function filInUserInfo() {
  * create html element to display the quiz category
  */
 function displayCategory(data) {
-    let category = document.getElementById('category');
+    category = document.getElementById('category');
     let ctg = document.createElement('span');
     ctg.classList.add('category');
     ctg.textContent = data.category;
@@ -161,7 +160,7 @@ function htmlDecode(input) {
  * create new elements to display the loaded question and it's related answers
  */
 function DisplayQuestionAndAnswers(data) {
-    let question = document.getElementById('question');
+    question = document.getElementById('question');
     let ques = document.createElement("h2");
     let incorrectAnswer = data.incorrect_answers;
     let answersList = incorrectAnswer;
