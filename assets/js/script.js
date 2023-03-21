@@ -1,6 +1,10 @@
-/* Jshint esversion: 6*/
+/* jshint esversion: 8*/
 let correctAnswer = "";
-let correctScore = incorrectScore = askedQuestions = 0;
+let correctScore  = 0;
+let incorrectScore = 0;
+let askedQuestions = 0;
+let question= "";
+let category= "";
 let totalQuestions;
 let enteredNumberOfQuestions;
 let url;
@@ -10,18 +14,18 @@ let time;
 let intervalId;
 let level;
 
-let difficulty = document.getElementById('difficulty');
-let answers = document.querySelector('.answers');
-let submitAnswerBtn = document.getElementById('check-answer');
-let correct = document.getElementById('correct');
-let inCorrect = document.getElementById('incorrect');
-let _playAgainBtn = document.getElementById('play-again');
-let alert = document.getElementById('alert');
-let questionCounter = document.getElementById('question-counter');
-let totalQ = document.getElementById('question-sum');
-let timer = document.getElementById('count-down-timer');
-let form = document.getElementById('form');
-let startQuizBtn = document.getElementById('start-quiz-button');
+const difficulty = document.getElementById('difficulty');
+const answers = document.querySelector('.answers');
+const submitAnswerBtn = document.getElementById('check-answer');
+const correct = document.getElementById('correct');
+const incorrect = document.getElementById('incorrect');
+const _playAgainBtn = document.getElementById('play-again');
+const alert = document.getElementById('alert');
+const questionCounter = document.getElementById('question-counter');
+const totalQ = document.getElementById('question-sum');
+const timer = document.getElementById('count-down-timer');
+const form = document.getElementById('form');
+const startQuizBtn = document.getElementById('start-quiz-button');
 
 /**
  * execute the following on DOM load
@@ -61,13 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
 /**
  * 1 - empty html page content
  * 2 - Load data from open TRIVIA Api 
+ * Note : The idea of loading the data from TRIVIA Api inspired from : https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js
  */
 async function loadData() {
     answers.innerHTML = '';
     question.innerHTML = '';
     alert.innerHTML = "";
     category.innerHTML = '';
-    let response = await fetch(`${url}`)
+    let response = await fetch(`${url}`);
     let data = await response.json();
     console.log(data);
     displayCategory(data.results[0]);
@@ -100,7 +105,7 @@ var countDown = () => {
         alert.innerHTML = "";
         alert.appendChild(scoreMsg);
     }
-}
+};
 
 function stopCountDown() {
     console.log("stop");
@@ -145,12 +150,12 @@ function DisplayQuestionAndAnswers(data) {
     correctAnswer = data.correct_answer;
     answersList.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
 
-    ques.innerHTML =  htmlDecode(data.question);
+    ques.textContent =  htmlDecode(data.question);
     question.appendChild(ques);
 
     answersList.forEach((answer) => {
         let paragraph = document.createElement("p");
-        let span = document.createElement("span")
+        let span = document.createElement("span");
         span.textContent = htmlDecode(answer);
         paragraph.appendChild(span);
         answers.appendChild(paragraph);
@@ -166,7 +171,7 @@ function DisplayQuestionAndAnswers(data) {
 function checkAnswer() {
     alert.innerHTML = "";
     let message = document.createElement('p');
-    if (allAnswers = answers.getElementsByClassName('selected')[0]) {
+    if (answers.getElementsByClassName('selected')[0]) {
         let allAnswers = answers.getElementsByClassName('selected')[0];
         let selectedAnswer = allAnswers.getElementsByTagName('span')[0].textContent;
         submitAnswerBtn.disabled = true;
@@ -191,8 +196,6 @@ function checkAnswer() {
  * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  but i make one change so the function suits my project's my logic 
  */
 function selectAnswer() {
-    let allAnswers = answers.getElementsByTagName('p')[0];
-    let allSelectedAnswers = answers.getElementsByClassName('selected')[0];
 
     answers.querySelectorAll('p').forEach((answer) => {
         answer.addEventListener('click', () => {
