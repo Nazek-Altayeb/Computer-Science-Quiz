@@ -37,8 +37,12 @@ body {
     border-bottom-right-radius: 1.5rem;
     box-shadow: 10px 10px 10px 6px #aaa783;
 }
-.card{
-   
+#question-answers-card{
+    display: none;
+}
+
+#number-of-questions{
+    margin-top: 0.5rem;
 }
 
 #difficulty {

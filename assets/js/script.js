@@ -28,6 +28,7 @@ const totalQ = document.getElementById('question-sum');
 const timer = document.getElementById('count-down-timer');
 const form = document.getElementById('form');
 const startQuizBtn = document.getElementById('start-quiz-button');
+const questionAnswersArea = document.getElementById('question-answers-card');
 
 /**
  * execute the following on DOM load
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert.innerHTML = "";
         _playAgainBtn.style.display = "none";
         submitAnswerBtn.style.display = "block";
+        questionAnswersArea.style.display = "block";
         startQuizBtn.style.display = "none";
         document.getElementById("user-name").disabled = true;
         document.getElementById("number-of-questions").disabled = true;
