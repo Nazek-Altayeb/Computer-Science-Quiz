@@ -11,7 +11,7 @@ body {
     min-height: 70vh;
     font-family: 'Poppins', sans-serif;
     color: #000;
-    background-color: #abaf99 !important;
+    background-color: #dddbcd !important;
 
 }
 
@@ -21,17 +21,30 @@ body {
     margin: 50px auto;
     display: table-cell;
     vertical-align: middle;
-    background: #D9E5CD;
+    background: #fff;
+    background-color: #fff !important;
     padding: 1.5rem 4rem 3rem 4rem;
     /* width: 70%; */
     height: 100%;
     border-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
-    box-shadow: 10px 10px 10px 6px #aaa783 ;
+    box-shadow: 10px 10px 10px 6px #aaa783;
 }
-#difficulty{
+
+.card-body {
+    background: #D9E5CD;
+    border-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    box-shadow: 10px 10px 10px 6px #aaa783;
+}
+.card{
+   
+}
+
+#difficulty {
     margin-top: 0.5rem;
 }
+
 .vertical-center {
     display: flex;
 }

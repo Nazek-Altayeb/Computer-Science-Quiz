@@ -19,91 +19,104 @@
 
 <body>
     <div class="vertical-center">
-        <div class="container p-3 mb-5  rounded">
+        <div class="container">
             <div class="row ">
                 <div class="col-md-6">
-                    <p> Before starting the Quiz, Please note the following</p>
-                    <ul>
-                        <li> Kindly type in your name, an amount of questions and a level of difficulty that you would
-                            like to go with in the
-                            aside form</li>
-                            <li>Filing in info in the aside form can be only once</li>
-                        <li>A specific time will be given, spending more that one minute on each question
-                            could result in not being able to finalize the test</li>
-                        <li>Your score will be displayed once time is over Or all questions are answered</li>
-                    </ul>
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <p> Before starting the Quiz, Please note the following</p>
+                            <ul>
+                                <li> Kindly type in your name, an amount of questions and a level of difficulty that you
+                                    would
+                                    like to go with in the
+                                    aside form</li>
+                                <li>Filing in info in the aside form can be only once</li>
+                                <li>A specific time will be given, spending more that one minute on each question
+                                    could result in not being able to finalize the test</li>
+                                <li>Your score will be displayed once time is over Or all questions are answered</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <form class=" col-md-6" id="form">
-                    <div class="form-group row align-items-center">
-                        <label class="col-md-3 " for="user-name">Name</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="user-name" required>
-                        </div>
-                    </div>
-                    <div class="form-group row align-items-center">
-                        <label class="col-sm-3" for="number-of-questions">Questions amount</label>
-                        <div class="col-sm-9">
-                            <input type="number" class="form-control" id="number-of-questions" required>
-                        </div>
-                    </div>
-                    <div class="form-group row align-items-center" id="difficulty">
-                        <label class="col-sm-3">Difficulty</label>
-                        <div class="col-sm-9">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="easy"
-                                    value="" required>
-                                <label class="form-check-label" for="easy">easy</label>
+                <div class="card border-0 col-md-6">
+                    <div class="card-body">
+                        <form id="form">
+                            <div class="form-group row align-items-center">
+                                <label class="col-md-3 " for="user-name">Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="user-name" required>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="medium"
-                                    value="" required>
-                                <label class="form-check-label" for="medium">medium</label>
+                            <div class="form-group row align-items-center">
+                                <label class="col-sm-3" for="number-of-questions">Questions amount</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" id="number-of-questions" required>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="hard"
-                                    value="" required>
-                                <label class="form-check-label" for="hard">hard</label>
+                            <div class="form-group row align-items-center" id="difficulty">
+                                <label class="col-sm-3">Difficulty</label>
+                                <div class="col-sm-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="easy"
+                                            value="" required>
+                                        <label class="form-check-label" for="easy">easy</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="medium" value="" required>
+                                        <label class="form-check-label" for="medium">medium</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="hard"
+                                            value="" required>
+                                        <label class="form-check-label" for="hard">hard</label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <button type="submit" class="btn" id="start-quiz-button" value="save">start quiz</button>
-                </form>
-            </div>
-            <div class="below-row"></div>
-            <div class="row">
-                <div class="timer-style">
-                    <p class="far fa-clock" id="count-down-timer"> 00:00</p>
+                            <button type="submit" class="btn" id="start-quiz-button" value="save">start quiz</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="header">
-                    <h1 class="title">Test your knowledge in</h1>
-                    <h2 class="title" id="category">
-                        <!--title will be inserted here from the api -->
-                    </h2>
-                    <h2 class="title">-----------</h2>
-                </div>
-                <div class="body">
-                    <div class="question" id="question">
-                        <!--Question will be inserted here from the api -->
+            <br>
+            <div class="card border-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="timer-style">
+                            <p class="far fa-clock" id="count-down-timer"> 00:00</p>
+                        </div>
                     </div>
-                    <div class="questions-number">
-                        <span id="question-counter"></span>/<span id="question-sum"></span>
+                    <div class="row">
+                        <div class="header">
+                            <h1 class="title">Test your knowledge in</h1>
+                            <h2 class="title" id="category">
+                                <!--title will be inserted here from the api -->
+                            </h2>
+                            <h2 class="title">-----------</h2>
+                        </div>
+                        <div class="body">
+                            <div class="question" id="question">
+                                <!--Question will be inserted here from the api -->
+                            </div>
+                            <div class="questions-number">
+                                <span id="question-counter"></span>/<span id="question-sum"></span>
+                            </div>
+                            <div class="answers">
+                                <!-- 4 answers will be inserted here from the api  -->
+                            </div>
+                            <div id="alert">
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button type="button" id="check-answer">submit Answer</button>
+                            <button type="button" id="play-again">Play Again!</button>
+                        </div>
+                        <div class="scoreArea">
+                            <p class="scores">correct Answers <span id="correct">0</span></p>
+                            <p class="scores">incorrect Answers <span id="incorrect">0</span></p>
+                        </div>
                     </div>
-                    <div class="answers">
-                        <!-- 4 answers will be inserted here from the api  -->
-                    </div>
-                    <div id="alert">
-                    </div>
-                </div>
-                <div class="footer">
-                    <button type="button" id="check-answer">submit Answer</button>
-                    <button type="button" id="play-again">Play Again!</button>
-                </div>
-                <div class="scoreArea">
-                    <p class="scores">correct Answers <span id="correct">0</span></p>
-                    <p class="scores">incorrect Answers <span id="incorrect">0</span></p>
                 </div>
             </div>
         </div>
