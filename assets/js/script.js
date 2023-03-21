@@ -14,7 +14,10 @@ let time;
 let intervalId;
 let level;
 
-const difficulty = document.getElementById('difficulty');
+// const difficulty = document.getElementById('difficulty');
+const easy = document.getElementById('easy');
+const medium = document.getElementById('medium');
+const hard = document.getElementById('hard');
 const answers = document.querySelector('.answers');
 const submitAnswerBtn = document.getElementById('check-answer');
 const correct = document.getElementById('correct');
@@ -43,8 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
         time = quizDuration * 60;
-        level = difficulty.value;
-        url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=${level}&type=multiple`;
+        getDifficultyLevel();
+        console.log(level);
+        url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=${level}&type=multiple`;        
         loadData();
         submitAnswerBtn.addEventListener('click', checkAnswer);
         _playAgainBtn.addEventListener('click', playAgain);
@@ -56,7 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
         startQuizBtn.style.display = "none";
         document.getElementById("user-name").disabled = true;
         document.getElementById("number-of-questions").disabled = true;
-        document.getElementById("difficulty").disabled = true;
+        document.getElementById("easy").disabled = true;
+        document.getElementById("medium").disabled = true;
+        document.getElementById("hard").disabled = true;
         intervalId = setInterval(countDown, 1000);
     });
 
@@ -77,6 +83,19 @@ async function loadData() {
     console.log(data);
     displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
+}
+
+/** 
+ * Get the difficulty level
+*/
+function getDifficultyLevel(){
+    if(easy.checked == true){
+        level = 'easy';
+    }else if(medium.checked == true){
+        level = 'medium';
+    }else if(hard.checked == true){
+        level = 'hard';
+    }
 }
 
 /**
