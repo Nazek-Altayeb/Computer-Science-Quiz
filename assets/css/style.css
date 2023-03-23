@@ -11,6 +11,10 @@
     color: #aaa783;
 }
 
+#not-found{
+align-items: center;
+}
+
 body {
     min-height: 70vh;
     font-family: 'Poppins', sans-serif;
