@@ -80,7 +80,6 @@ async function loadData() {
     category.innerHTML = '';
     let response = await fetch(`${url}`);
     let data = await response.json();
-    console.log(data);
     displayCategory(data.results[0]);
     DisplayQuestionAndAnswers(data.results[0]);
 }
@@ -127,7 +126,6 @@ var countDown = () => {
 };
 
 function stopCountDown() {
-    console.log("stop");
     clearInterval(intervalId);
 }
 
@@ -150,7 +148,7 @@ function displayCategory(data) {
     category.appendChild(ctg);
 }
 /** 
- * Note: The below function is added by the Tutor while supproting in resolving a bug (strings contain special charactors when displayed)
+ * Note: The below function is added by the Tutor while supporting in resolving a bug (strings contain special charactors when displayed)
 */
 function htmlDecode(input) {
     let doc = new DOMParser().parseFromString(input, "text/html");
