@@ -101,10 +101,18 @@ display score : sores are displayed in two cases, after user finishes answering 
 * The responsive feature have been tested for different devices with no failure. 
 * Devices:
   * iPhone SE
+  * iPad Air
+  * iPad mini
+  * iPhone XR
+  * iPhone 12 Pro
+  * Galaxy Fold
+  * Surface Pro 7
+
 
 # Fixed bugs
-1. Timer keep in counting down even if the user finishes answering all questions.
-1. If no answer is selected, the alert msg 'Please select an answer' is not displayed
+1. Timer keep in counting down even if the user finishes answering all questions (invoke the timer function when user click on start quiz)
+1. If no answer is selected, the alert msg 'Please select an answer' is not displayed (elemnt that hold the alert message was not appended to it's parent) 
+1. Display the instruction card and the fill-in form card below each others (problem was solved by re-ordering the two bootstrap classes that are used)
 
 
 # Deployment
