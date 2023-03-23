@@ -29,7 +29,7 @@ A few instructions are presented aside with a fill in form where the user type i
 * UX is easy to understand and use.  
 
 ## colors
-The Granny Apple and Neutral Green are used as background colors for the quiz area and it's shadow
+Milk White, white Smoke and Neutral Green are used as three basic colors for the quiz area, it's shadow and the background.
 the rest of the page remained white
 
 ## Typography 
@@ -82,7 +82,7 @@ display score : sores are displayed in two cases, after user finishes answering 
 
 ##  Content
 - [Open TRIVIA Api:](https://opentdb.com/api_config.php) 
-    - Data (questions and answers) have been loaded from Open TRAVIA. 
+    - Data (questions and answers) have been loaded from Open TRAVIA as json data. 
 
 # Testing
 ## Validation
