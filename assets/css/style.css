@@ -30,6 +30,10 @@ body {
     box-shadow: 10px 10px 10px 6px #aaa783;
 }
 
+.card{
+    margin-bottom: 1rem;
+}
+
 .card-body {
     background: #D9E5CD;
     border-radius: 1.5rem;
@@ -99,7 +103,7 @@ body {
 .answers p:hover {
     background-color: #f2f2f2;
     color: #000;
-    border-color: #D9E5CD;
+    border-color: #dddbcd;
     box-shadow: 1px 2px 1px 1px #aaa783;
     cursor: pointer;
 }
@@ -157,8 +161,38 @@ body {
 }
 
 #alert {
-    /* padding: .7rem 0; */
     text-align: center;
     font-weight: 600;
     font-size: 1.3rem;
 }
+ 
+  @media screen and (min-device-width: 912px)
+ {
+    /* #form label{
+        font-size: 1rem;
+    } */
+  }
+
+  @media screen and (min-device-width: 820px)
+  {
+    /* #form label{
+        font-size: 0.5rem;
+    } */
+  }
+
+  @media screen and (min-device-width: 768px)
+ {
+    /* #form label{
+        font-size: 0.5rem;
+    } */
+  }
+
+  
+  @media screen and (min-device-width: 280px)
+  {
+    /* #form label{
+        font-size: 0.5rem;
+    } */
+  }
+   
+ 
