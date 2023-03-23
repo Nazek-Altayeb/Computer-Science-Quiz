@@ -1,14 +1,16 @@
 [Click this link to view the Website.](https://nazek-altayeb.github.io/Computer-Science-Quiz/)
 
-# Project Objective
-People with Computer science background may examine their knowledge with this challenging quiz, a quiz where a specified number of questions is displayed according to a level of difficulty that is determinated by the quiz taker himself/herself.
+This site is for people who come with computer science background and like doing chanllenges that examine their theory knowledge in this field. 
+A few instructions are presented aside with a fill in form where the user type in his/her name, a mount of questions and choose a level of difficulty before starting the quiz.
+
+![main-page](./assets/images/quiz-project-picture.png)
 
 # User Experience
 ## Site owner goals
 *As a site owner, my goal is to :* 
 * Develop responsive and easy to use one-page website.
 * Express what is required to proceed with the quiz in short and simple sentences. 
-* Provide user with options (ex: difficulty level, number of questions)
+* Provide user with options (ex: difficulty level, number of questions).
 * Accumolate both correct and incorrect answers, and display the score.
 * set quiz timer, freeze the quiz form and prevent the quiz taker from answering the questions when time is over.
 
@@ -74,26 +76,26 @@ display score : sores are displayed in two cases, after user finishes answering 
 
 # Credit
 ## Code
-- The three following functions in script.js has been copied form the project available at [https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api]
-  - functions have been extended or changed to suit my project logic
-  - Comments have been added to each function
+- Three functions in script.js has been copied form the project available at [https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api]
+  - The three functions have been either extended or changed to suit my project logic.
+  - Comments have been added to each function.
 
 ##  Content
-  1. [Open TRIVIA Api:](https://opentdb.com/api_config.php) 
+- [Open TRIVIA Api:](https://opentdb.com/api_config.php) 
     - Data (questions and answers) have been loaded from Open TRAVIA. 
 
 # Testing
 ## Validation
-1. W3C Markup Validator
-    - [Results](./assets/documents/w3c-html-result.png) 
+1. W3C Markup Validator ( [Results](./assets/documents/w3c-html-result.png) )
+    - The page has passed the validation test with no error.
 
-1. W3C CSS Validator
-    - [Results](./assets/documents/w3c-html-result.png) 
+1. W3C CSS Validator ( [Results](./assets/documents/w3c-html-result.png) )
+    - The page has passed the validation test with no error.
 
 
 ## Performance
-* [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/): is used to evaluate the speed and perfomance of the quiz-project site
-    - [Results](./assets/documents/lighthouse-result.png) 
+* [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/): [Results](./assets/documents/lighthouse-result.png)
+    -  Lighthouse is used to evaluate the speed and perfomance of the quiz-project site
 
 ## Responsiveness
 * The responsive feature have been tested for different devices with no failure. 
