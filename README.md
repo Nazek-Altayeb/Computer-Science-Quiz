@@ -93,6 +93,7 @@ display score : sores are displayed in two cases, after user finishes answering 
 
 ## Performance
 * [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+    - [Results](./assets/documents/lighthouse-result.png) 
     - is used to evaluate the speed and perfomance of the quiz-project site.
 
 ## Responsiveness
