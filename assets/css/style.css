@@ -7,6 +7,10 @@
 
 }
 
+#logo {
+    color: #aaa783;
+}
+
 body {
     min-height: 70vh;
     font-family: 'Poppins', sans-serif;
@@ -30,7 +34,7 @@ body {
     box-shadow: 10px 10px 10px 6px #aaa783;
 }
 
-.card{
+.card {
     margin-bottom: 1rem;
 }
 
@@ -40,11 +44,12 @@ body {
     border-bottom-right-radius: 1.5rem;
     box-shadow: 10px 10px 10px 6px #aaa783;
 }
-#question-answers-area{
+
+#question-answers-area {
     display: none;
 }
 
-#number-of-questions{
+#number-of-questions {
     margin-top: 0.5rem;
 }
 
@@ -165,4 +170,3 @@ body {
     font-weight: 600;
     font-size: 1.3rem;
 }
- 
