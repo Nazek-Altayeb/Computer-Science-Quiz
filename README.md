@@ -85,16 +85,15 @@ display score : sores are displayed in two cases, after user finishes answering 
 # Testing
 ## Validation
 1. W3C Markup Validator
+    - [Results](./assets/documents/w3c-html-result.png) 
 
 1. W3C CSS Validator
-
-1. Lighthouse (Performance testing)
+    - [Results](./assets/documents/w3c-html-result.png) 
 
 
 ## Performance
-* [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+* [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/): is used to evaluate the speed and perfomance of the quiz-project site
     - [Results](./assets/documents/lighthouse-result.png) 
-    - is used to evaluate the speed and perfomance of the quiz-project site.
 
 ## Responsiveness
 * The responsive feature have been tested for different devices with no failure. 

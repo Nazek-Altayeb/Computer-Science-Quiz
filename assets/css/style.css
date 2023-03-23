@@ -166,33 +166,3 @@ body {
     font-size: 1.3rem;
 }
  
-  @media screen and (min-device-width: 912px)
- {
-    /* #form label{
-        font-size: 1rem;
-    } */
-  }
-
-  @media screen and (min-device-width: 820px)
-  {
-    /* #form label{
-        font-size: 0.5rem;
-    } */
-  }
-
-  @media screen and (min-device-width: 768px)
- {
-    /* #form label{
-        font-size: 0.5rem;
-    } */
-  }
-
-  
-  @media screen and (min-device-width: 280px)
-  {
-    /* #form label{
-        font-size: 0.5rem;
-    } */
-  }
-   
- 
