@@ -212,7 +212,7 @@ function checkAnswer() {
 
 /**
  * de-select other answers when one answer is selected
- * this code is taken from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js  but i make one change so the function suits my project's my logic 
+ * reference from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and i make one change so the function suits my project's my logic 
  */
 function selectAnswer() {
 
@@ -229,7 +229,7 @@ function selectAnswer() {
 
 /**
  * display the user final score if all questions are answered, otherwise load the next question
- * The idea of the function below is found here https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , but I have been extended and changed the function according to the logic needs
+ * The idea of the function below is referenced from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and I have been extended and changed the function according to the logic needs
  */
 function countCorrectAndIncorrectAnswers() {
     let scoreMessage = document.createElement('p');
@@ -255,7 +255,7 @@ function countCorrectAndIncorrectAnswers() {
 
 /**
  * reset quiz-score and stop-watch
- * The idea of the function below is found here https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , but I have been extended and changed the function according to the logic needs
+ * The idea of the function below is reference from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and I have been extended and changed the function according to the logic needs
  */
 function playAgain() {
     correctScore = askedQuestions = incorrectScore = 0;
