@@ -102,7 +102,7 @@ body {
     line-height: 1.3;
     margin-bottom: 2rem;
 }
-
+/* reference : https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/main.css , and changes have been make to suit the desired style */ 
 .question .category {
     font-size: 0.9rem;
     font-weight: 500;
@@ -114,11 +114,11 @@ body {
 }
 
 .answers p:hover {
-    background-color: #f2f2f2;
+    cursor: pointer;
     color: #000;
     border-color: #dddbcd;
-    box-shadow: 1px 2px 1px 1px #aaa783;
-    cursor: pointer;
+    background-color: #f2f2f2;    
+    box-shadow: 1px 2px 1px 1px #aaa783;    
 }
 
 .scoreArea {
@@ -150,7 +150,6 @@ body {
     border-radius: 0.5rem;
     background-color: #dddbcd;
     font-size: 1.2rem;
-    font-weight: 600;
     padding: .5rem 1rem;
     margin: 0 auto 0 auto;
     cursor: pointer;
