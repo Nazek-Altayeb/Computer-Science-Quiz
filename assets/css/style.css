@@ -11,8 +11,8 @@
     color: #aaa783;
 }
 
-#not-found{
-align-items: center;
+#not-found {
+    align-items: center;
 }
 
 body {
@@ -152,17 +152,7 @@ body {
     cursor: pointer;
     display: block;
     color: #000;
-    transition: all 300ms ease-in-out;
     box-shadow: 0 4px 0 0 #bbbbbb;
-}
-
-.footer button:hover {
-    background-color: #e6e6e6;
-    box-shadow: 0 4px 0 0 #a7a7a7;
-}
-
-.footer button:active {
-    transform: scale(0.95);
 }
 
 #play-again {
@@ -173,4 +163,90 @@ body {
     text-align: center;
     font-weight: 600;
     font-size: 1.3rem;
+}
+
+@media screen and (min-width: 280px) {
+    #instructions p{
+        font-size: 1rem;
+    }
+    #instructions ul{
+        font-size: 0.9rem;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    #number-of-questions {
+        margin-top: 0px;
+    }
+
+    .form-group {
+        padding-bottom: 0.2rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    #difficulty {
+        font-size: 0.8rem;
+    }
+
+    #easy {
+        width: 0.7rem;
+        height: 0.7rem;
+    }
+
+    #medium {
+        width: 0.7rem;
+        height: 0.7rem;
+    }
+
+    #hard {
+        width: 0.7rem;
+        height: 0.7rem;
+
+    }
+
+    .form-check-label {
+        font-size: 0.7rem;
+    }
+
+    #start-quiz-button {
+        width: 6rem;
+        height: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .question {
+        font-size: 0.6rem;
+    }
+
+    .answers {
+        font-size: 0.9rem;
+    }
+
+    #correct {
+        font-size: 0.8rem;
+    }
+
+    #incorrect {
+        font-size: 0.8rem;
+    }
+
+    .scores {
+        font-size: 0.8rem;
+    }
+
+    #alert {
+        font-size: 1rem;
+    }
+
+    .footer button {
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+
 }
