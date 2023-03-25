@@ -123,8 +123,11 @@ Scores are displayed in two cases, after user finishes answering all given quest
 
 ## Validation
 1. W3C Markup Validator ( [Results](./assets/documents/w3c-html-result.png) )
-    - The page has passed the validation test with no error.
+    - The main page (Index) has passed the validation test with no error.
 
+1. W3C Markup Validator ( [Results](./assets/documents/not-found-page-result.png) )
+    - The 404 page  has passed the validation test with no error.
+    
 1. W3C CSS Validator ( [Results](./assets/documents/jigsaw-css-result.png) )
     - The page has passed the validation test with no error.
 
