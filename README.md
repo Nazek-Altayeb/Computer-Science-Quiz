@@ -105,7 +105,7 @@ Scores are displayed in two cases, after user finishes answering all given quest
 
 # Testing
 
-## First Test scenario
+## First case scenario
 - First, user fill in his/her (Name , amount of questions, difficulty level)
 - Press on 'start quiz' button
 - Second, the quiz area is displayed containing (Timer , Question counter, a question with four answer-options, two counters to accumulate the correct and incorrect answers).
@@ -113,7 +113,7 @@ Scores are displayed in two cases, after user finishes answering all given quest
 - when user answers all question with the given amount of time, the final score is displayed.
 - Finally, the user is given a choice to take the quiz again.
 
-## Second Test scenario
+## Second case scenario
 - First, user fill in his/her (Name , amount of questions, difficulty level)
 - Press on 'start quiz' button
 - Second, the quiz area is displayed containing (Timer , Questions counter, a question with four answer-options, two counters to accumulate the correct and incorrect answers).
