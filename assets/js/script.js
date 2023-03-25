@@ -142,7 +142,7 @@ var countDown = () => {
         takeQuizAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
-        scoreMsg.textContent = `Thank you ${userName} for taking the exam, your score is ${score}`;
+        scoreMsg.textContent = `Thank you ${userName} for taking the quiz, your score is ${score}`;
         alert.innerHTML = "";
         alert.appendChild(scoreMsg);
     }
@@ -267,7 +267,7 @@ function countCorrectAndIncorrectAnswers() {
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
         score = ((score) * 100);
-        scoreMessage.textContent = `Thank you ${userName} for taking the exam, your score is ${score} %`;
+        scoreMessage.textContent = `Thank you ${userName} for taking the quiz, your score is ${score} %`;
         alert.appendChild(scoreMessage);
         stopCountDown();
     } else {
