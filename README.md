@@ -1,7 +1,7 @@
 [Click this link to view the Website.](https://nazek-altayeb.github.io/Computer-Science-Quiz/)
 
-This site is for people who come with computer science background and like doing chanllenges that examine their theory knowledge in this field. 
-A few instructions are presented aside with a fill in form where the user type in his/her name, a mount of questions and choose a level of difficulty before starting the quiz.
+This site is for people who come with computer science background and like doing challenges that examine their theory knowledge in this field. 
+A few instructions are presented aside with a fill-in form where the user type in his/her name, a mount of questions and choose a level of difficulty before starting the quiz.
 
 ![main-page](./assets/images/quiz-project-picture.png)
 
@@ -30,7 +30,7 @@ A few instructions are presented aside with a fill in form where the user type i
 
 ## colors
 Milk White, white Smoke and Neutral Green are used as three basic colors for the quiz area, it's shadow and the background.
-the rest of the page remained white
+the rest of the page remained white.
 
 ## Typography 
 Basicly, Poppins is the font used and Sans-serif is the back-up font if Poppins fails to load.
@@ -38,17 +38,29 @@ Basicly, Poppins is the font used and Sans-serif is the back-up font if Poppins 
 # Features 
 ## Existing features
 
-### Quiz form
-start quiz form: user will be asked to type in his/her name and a number of how many question would he/she like to take in the quiz, this form is disabled once the user click on 'start quiz' button.
+### Fill in quiz form
+User will be asked to type in the following:
+- Name,
+- A number of how many question would he/she like to take in the quiz,
+- Choose a level of difficulty,
+ The form will be disabled once the user click on 'start quiz' button.
 
-### Load Data From API
-display question and related answers: All are load from the api: https://opentdb.com/api_config.php, the number of question is determined by the input entered in the start quiz form.
+### Load quiz-data from API
+- Every question and it's related answers: All are load from the api: https://opentdb.com/api_config.php,
+- The number of question is determined by the input entered in the start quiz form.
 
 ### Stop Watch
-stop watch : a minute is given for each question to be answered, submiting answers will be disabled even if the user didn't finish.
+Approximately a minute is given for each question to be answered, submiting answers will be disabled even if the user didn't finish.
 
 ### Score accumulation
-display score : sores are displayed in two cases, after user finishes answering all given questions, or when time is over.
+Scores are displayed in two cases, after user finishes answering all given questions, or when time is over.
+
+### Display alert messages
+- Incase user click on 'Submit answer' button without selecting an answer, an alert message will be displayed asking the user to select answer first.
+- In case the quiz is finished, the score points will be displayed
+
+### Display score
+- Either when user finish answering all questions Or when time is over, the score will be displayed.
 
 ## Future-planned features
 * Display the highst score for the same level of difficulty.
@@ -76,7 +88,7 @@ display score : sores are displayed in two cases, after user finishes answering 
 
 # Credit
 ## Code
-- Three functions in script.js has been copied form the project available at [https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api]
+- Three functions in script.js has been referenced at [https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api]
   - The three functions have been either extended or changed to suit my project logic.
   - Comments have been added to each function.
 
@@ -85,6 +97,23 @@ display score : sores are displayed in two cases, after user finishes answering 
     - Data (questions and answers) have been loaded from Open TRAVIA as json data. 
 
 # Testing
+
+## First Test scenario
+- First, user fill in his/her (Name , amount of questions, difficulty level)
+- Press on 'start quiz' button
+- Second, the quiz area is displayed containing (Timer , Question counter, a question with four answer-options, two counters to accumulate the correct and incorrect answers).
+- Third, once the user select an answer, he should click on 'submit answer', then one of the counters (correct answer, incorrect answer) will be increased by 1.
+- when user answers all question with the given amount of time, the final score is displayed.
+- Finally, the user is given a choice to take the quiz again.
+
+## Second Test scenario
+- First, user fill in his/her (Name , amount of questions, difficulty level)
+- Press on 'start quiz' button
+- Second, the quiz area is displayed containing (Timer , Question counter, a question with four answer-options, two counters to accumulate the correct and incorrect answers).
+- Third, once the user select an answer, he should click on 'submit answer', then one of the counters (correct answer, incorrect answer) will be increased by 1.
+- in case time is over, the question area is freezed (no way to submit more answers) and the final score is displayed.
+- Finally, the user is given a choice to take the quiz again.
+
 ## Validation
 1. W3C Markup Validator ( [Results](./assets/documents/w3c-html-result.png) )
     - The page has passed the validation test with no error.
