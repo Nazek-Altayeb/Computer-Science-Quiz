@@ -125,7 +125,7 @@ Scores are displayed in two cases, after user finishes answering all given quest
 1. W3C Markup Validator ( [Results](./assets/documents/w3c-html-result.png) )
     - The page has passed the validation test with no error.
 
-1. W3C CSS Validator ( [Results](./assets/documents/w3c-html-result.png) )
+1. W3C CSS Validator ( [Results](./assets/documents/jigsaw-css-result.png) )
     - The page has passed the validation test with no error.
 
 1. Jshint javascript validator ([Results](./assets/documents/Jshint-result.png))
