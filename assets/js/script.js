@@ -36,7 +36,7 @@ const questionAnswersArea = document.getElementById('question-answers-area');
  * 2 - prevent entering new data after pressing on 'start quiz'.
  * 3 - calculate the quiz duration (in minutes) according to the number of questions the user has typed in the quiz-form.
  * 4 - invoke checkAnswer function upon user click (applicable  only when user select an answer).
- * 5 - invoke playAgain function upon user click (visible only when user finishes answering all questions).
+ * 5 - invoke takeQuizAgain function upon user click (visible only when user finishes answering all questions).
  * 6 - start quiz stop-watch after clicking on 'start-quiz'
  */
 
