@@ -109,7 +109,7 @@ Scores are displayed in two cases, after user finishes answering all given quest
 ## Second Test scenario
 - First, user fill in his/her (Name , amount of questions, difficulty level)
 - Press on 'start quiz' button
-- Second, the quiz area is displayed containing (Timer , Question counter, a question with four answer-options, two counters to accumulate the correct and incorrect answers).
+- Second, the quiz area is displayed containing (Timer , Questions counter, a question with four answer-options, two counters to accumulate the correct and incorrect answers).
 - Third, once the user select an answer, he should click on 'submit answer', then one of the counters (correct answer, incorrect answer) will be increased by 1.
 - in case time is over, the question area is freezed (no way to submit more answers) and the final score is displayed.
 - Finally, the user is given a choice to take the quiz again.
