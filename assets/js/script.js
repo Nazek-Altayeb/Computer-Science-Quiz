@@ -61,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
         submitAnswerBtn.addEventListener('click', checkAnswer);
 
         /** call  playAgain function once clicking on 'take quiz answer' button*/
-        takeQuizAgainBtn.addEventListener('click', playAgain);
+        takeQuizAgainBtn.addEventListener('click', takeQuizAgain);
 
-        /** fill in  */
+        /** fill in  variables with initial values*/
         totalQ.textContent = totalQuestions;
         questionCounter.textContent = askedQuestions;
         alert.innerHTML = "";
@@ -266,7 +266,8 @@ function countCorrectAndIncorrectAnswers() {
         takeQuizAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
-        scoreMessage.textContent = `Your score is ${score}`;
+        score = ((score) * 100);
+        scoreMessage.textContent = `Your score is ${score} %`;
         alert.appendChild(scoreMessage);
         stopCountDown();
     } else {
@@ -280,7 +281,7 @@ function countCorrectAndIncorrectAnswers() {
  * reset quiz-score and stop-watch
  * The idea of the function below is reference from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and I have been extended and changed the function according to the logic needs
  */
-function playAgain() {
+function takeQuizAgain() {
     correctScore = askedQuestions = incorrectScore = 0;
     alert.innerHTML = "";
     takeQuizAgainBtn.style.display = "none";
