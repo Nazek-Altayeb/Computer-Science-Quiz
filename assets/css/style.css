@@ -74,6 +74,7 @@ body {
 .title {
     text-align: center;
     font-size: 1.5rem;
+    color: grey;
 }
 
 #start-quiz-button{
