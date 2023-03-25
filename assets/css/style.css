@@ -11,6 +11,10 @@
     color: #aaa783;
     text-align: center;
 }
+#logo a{
+        color: #aaa783 !important;
+       
+}
 
 #not-found {
     align-items: center;
