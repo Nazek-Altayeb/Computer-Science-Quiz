@@ -142,7 +142,7 @@ var countDown = () => {
         takeQuizAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
-        scoreMsg.textContent = `Your score is ${score}`;
+        scoreMsg.textContent = `Thank you ${userName} for taking the exam, your score is ${score}`;
         alert.innerHTML = "";
         alert.appendChild(scoreMsg);
     }
@@ -235,7 +235,7 @@ function checkAnswer() {
 
 /**
  * de-select other answers when one answer is selected
- * reference from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and i make one change so the function suits my project's my logic 
+ * referenced here https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and i make one change so the function suits my project's my logic 
  */
 function selectAnswer() {
 
@@ -252,7 +252,7 @@ function selectAnswer() {
 
 /**
  * display the user final score if all questions are answered, otherwise load the next question
- * The idea of the function below is referenced from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and I have been extended and changed the function according to the logic needs
+ * The idea of the function below is referenced here https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and I have been extended and changed the function according to the logic needs
  */
 function countCorrectAndIncorrectAnswers() {
     let scoreMessage = document.createElement('p');
@@ -267,7 +267,7 @@ function countCorrectAndIncorrectAnswers() {
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
         score = ((score) * 100);
-        scoreMessage.textContent = `Your score is ${score} %`;
+        scoreMessage.textContent = `Thank you ${userName} for taking the exam, your score is ${score} %`;
         alert.appendChild(scoreMessage);
         stopCountDown();
     } else {
@@ -279,7 +279,7 @@ function countCorrectAndIncorrectAnswers() {
 
 /**
  * reset quiz-score and stop-watch
- * The idea of the function below is reference from https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and I have been extended and changed the function according to the logic needs
+ * The idea of the function below is referenced here https://github.com/prabinmagar/quiz-app-using-js-with-open-trivia-DB-api/blob/master/script.js , and I have been extended and changed the function according to the logic needs
  */
 function takeQuizAgain() {
     correctScore = askedQuestions = incorrectScore = 0;

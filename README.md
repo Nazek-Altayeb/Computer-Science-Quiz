@@ -62,7 +62,7 @@ Scores are displayed in two cases, after user finishes answering all given quest
 
 ## Display alert messages
 - Incase user click on 'Submit answer' button without selecting an answer, an alert message will be displayed asking the user to select answer first.
-- In case the quiz is finished, the score points will be displayed
+- In case the quiz is finished, the result message will be displayed
 
 ## Display score
 - Either when user finish answering all questions Or when time is over, the score will be displayed.
