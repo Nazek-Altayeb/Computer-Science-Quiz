@@ -89,6 +89,8 @@ Scores are displayed in two cases, after user finishes answering all given quest
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
 1. [GitHub:](https://github.com/)
     - GitHub is used to store the projects code after being pushed from Git.
+1. [JavaScript Async](https://www.w3schools.com/js/js_async.asp)
+    - in order to load questions and answers from the api, ES8 of javascript provides (async await) utility which handle such requests.  
 
 
 # Credit
@@ -126,7 +128,7 @@ Scores are displayed in two cases, after user finishes answering all given quest
 1. W3C CSS Validator ( [Results](./assets/documents/w3c-html-result.png) )
     - The page has passed the validation test with no error.
 
-1. Jshint javascript validator ([Results]())
+1. Jshint javascript validator ([Results](./assets/documents/Jshint-result.png))
     - The page has passed the validation test with no error.
 
 
