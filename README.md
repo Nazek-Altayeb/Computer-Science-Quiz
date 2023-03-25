@@ -126,6 +126,9 @@ Scores are displayed in two cases, after user finishes answering all given quest
 1. W3C CSS Validator ( [Results](./assets/documents/w3c-html-result.png) )
     - The page has passed the validation test with no error.
 
+1. Jshint javascript validator ([Results]())
+    - The page has passed the validation test with no error.
+
 
 ## Performance
 * [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/): [Results](./assets/documents/lighthouse-result.png)

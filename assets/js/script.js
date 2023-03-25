@@ -21,7 +21,7 @@ const answers = document.querySelector('.answers');
 const submitAnswerBtn = document.getElementById('check-answer');
 const correct = document.getElementById('correct');
 const incorrect = document.getElementById('incorrect');
-const _playAgainBtn = document.getElementById('play-again');
+const takeQuizAgainBtn = document.getElementById('play-again');
 const alert = document.getElementById('alert');
 const questionCounter = document.getElementById('question-counter');
 const totalQ = document.getElementById('question-sum');
@@ -39,30 +39,53 @@ const questionAnswersArea = document.getElementById('question-answers-area');
  * 5 - invoke playAgain function upon user click (visible only when user finishes answering all questions).
  * 6 - start quiz stop-watch after clicking on 'start-quiz'
  */
+
 document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+
+        /** get name , amount of questions entered by user */
         filInUserInfo();
+
+        /** fill in data relates to url and load data from api accordingly */
         totalQuestions = parseInt(enteredNumberOfQuestions, 10);
         quizDuration = totalQuestions;
         time = quizDuration * 60;
         getDifficultyLevel();
-        url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=${level}&type=multiple`;        
+        url = `https://opentdb.com/api.php?amount=${totalQuestions}&category=18&difficulty=${level}&type=multiple`;      
+        
+        /** call loadData function to load data from api */
         loadData();
+
+        /** call  checkAnswer function once clicking on 'submit answer' button*/
         submitAnswerBtn.addEventListener('click', checkAnswer);
-        _playAgainBtn.addEventListener('click', playAgain);
+
+        /** call  playAgain function once clicking on 'take quiz answer' button*/
+        takeQuizAgainBtn.addEventListener('click', playAgain);
+
+        /** fill in  */
         totalQ.textContent = totalQuestions;
         questionCounter.textContent = askedQuestions;
         alert.innerHTML = "";
-        _playAgainBtn.style.display = "none";
+
+        /** disable 'take quiz again' button */
+        takeQuizAgainBtn.style.display = "none";
+
+        /** enable 'submit answer' button, and display quiz area */
         submitAnswerBtn.style.display = "block";
         questionAnswersArea.style.display = "block";
+
+        /** disable 'start quiz' button */
         startQuizBtn.style.display = "none";
+
+        /** freeze the quiz form area from entering new data after clicking on start-quiz button */
         document.getElementById("user-name").disabled = true;
         document.getElementById("number-of-questions").disabled = true;
         document.getElementById("easy").disabled = true;
         document.getElementById("medium").disabled = true;
         document.getElementById("hard").disabled = true;
+
+        /** start stop watch */
         intervalId = setInterval(countDown, 1000);
     });
 
@@ -116,7 +139,7 @@ var countDown = () => {
 
     if (time < 0) {
         stopCountDown();
-        _playAgainBtn.style.display = "block";
+        takeQuizAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
         scoreMsg.textContent = `Your score is ${score}`;
@@ -239,8 +262,8 @@ function countCorrectAndIncorrectAnswers() {
     correct.textContent = correctScore;
     incorrect.textContent = incorrectScore;
     if (askedQuestions == totalQuestions) {
-        //setTimeout(() => {}, 1000);
-        _playAgainBtn.style.display = "block";
+        setTimeout(() => {}, 1000);
+        takeQuizAgainBtn.style.display = "block";
         submitAnswerBtn.style.display = "none";
         let score = correctScore / totalQuestions;
         scoreMessage.textContent = `Your score is ${score}`;
@@ -260,7 +283,7 @@ function countCorrectAndIncorrectAnswers() {
 function playAgain() {
     correctScore = askedQuestions = incorrectScore = 0;
     alert.innerHTML = "";
-    _playAgainBtn.style.display = "none";
+    takeQuizAgainBtn.style.display = "none";
     submitAnswerBtn.style.display = "block";
     submitAnswerBtn.disabled = false;
     totalQ.textContent = totalQuestions;
