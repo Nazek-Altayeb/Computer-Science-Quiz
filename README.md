@@ -35,34 +35,39 @@ the rest of the page remained white.
 ## Typography 
 Basicly, Poppins is the font used and Sans-serif is the back-up font if Poppins fails to load.
 
-# Features 
-## Existing features
+# Features : Existing features
 
-### Fill in quiz form
+
+## Fill in quiz form
 User will be asked to type in the following:
 - Name,
 - A number of how many question would he/she like to take in the quiz,
-- Choose a level of difficulty,
- The form will be disabled once the user click on 'start quiz' button.
+- Choose a level of difficulty.
 
-### Load quiz-data from API
+Changing entries in the quiz form are not possible once the user click on 'start quiz' button.
+
+![Quiz form](./assets/images/quiz-form.png)
+
+## Load quiz-data from API
 - Every question and it's related answers: All are load from the api: https://opentdb.com/api_config.php,
 - The number of question is determined by the input entered in the start quiz form.
 
-### Stop Watch
+![Quiz form](./assets/images/quiz-area.png)
+
+## Stop Watch
 Approximately a minute is given for each question to be answered, submiting answers will be disabled even if the user didn't finish.
 
-### Score accumulation
+## Score accumulation
 Scores are displayed in two cases, after user finishes answering all given questions, or when time is over.
 
-### Display alert messages
+## Display alert messages
 - Incase user click on 'Submit answer' button without selecting an answer, an alert message will be displayed asking the user to select answer first.
 - In case the quiz is finished, the score points will be displayed
 
-### Display score
+## Display score
 - Either when user finish answering all questions Or when time is over, the score will be displayed.
 
-## Future-planned features
+# Future-planned features
 * Display the highst score for the same level of difficulty.
 * specify fixed amount of time for every question.
 * Extend the quiz form options to select the answer type (True / False) besides the multiple options that already exist.
